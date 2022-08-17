@@ -1,9 +1,19 @@
 {
-  "admin-example.navigation.label-group": "Schedule Version",
-  "admin-example.navigation.label-table": "Schedule Version table",
-  "admin-example.navigation.search.kws": "test, mock, fake",
-  "admin-example.navigation.details.search.kws": "details, mock, test, hello",
-  "admin-example.navigation.table.search.kws": "table, mock, test, bye",
-  "admin-example.hello-world": "Example Admin",
-  "admin-example.details": "Details page"
+  "admin-programversion.navigation.label-group": "Schedule Version",
+  "admin-programversion.navigation.label-table": "Schedule Table",
+  "admin-programversion.header.table-id":"ID Creation",
+  "admin-programversion.header.table-name-version": "Name Version",
+  "admin-programversion.header.table-last-publication":"Last Publication",
+  "admin-programversion.header.table-state-version":"State of Version",
+  "admin-programversion.header.table-new-publication":"New Publication",
+
+
+
+
+
+  "admin-programversion.navigation.search.kws": "test, mock, fake",
+  "admin-programversion.navigation.details.search.kws": "details, mock, test, hello",
+  "admin-programversion.navigation.table.search.kws": "table, mock, test, bye",
+  "admin-programversion.hello-world": "programversion Admin",
+  "admin-programversion.details": "Details page"
 }

@@ -1,9 +1,14 @@
 {
-  "admin-example.navigation.label-group": "Programar Version",
-  "admin-example.navigation.label-table": "Programar Version tabla",
-  "admin-example.navigation.search.kws": "teste, mock, fake",
-  "admin-example.navigation.details.search.kws": "detalhe, mock, test, oi",
-  "admin-example.navigation.table.search.kws": "tabela, mock, test, tchau",
-  "admin-example.hello-world": "Admin de ejemplo",
-  "admin-example.details": "Página de detalles"
+  "admin-programversion.navigation.label-group": "Programar Version",
+  "admin-programversion.navigation.label-table": "Programar Tabla",
+  "admin-programversion.header.table-id":"ID de creación",
+  "admin-programversion.header.table-name-version": "Nombre de la Versión",
+  "admin-programversion.header.table-last-publication":"Última publicación",
+  "admin-programversion.header.table-state-version":"Estado de la versión",
+  "admin-programversion.header.table-new-publication":"Nueva publicación",
+  "admin-programversion.navigation.search.kws": "teste, mock, fake",
+  "admin-programversion.navigation.details.search.kws": "detalhe, mock, test, oi",
+  "admin-programversion.navigation.table.search.kws": "tabela, mock, test, tchau",
+  "admin-programversion.hello-world": "Admin de ejemplo",
+  "admin-programversion.details": "Página de detalles"
 }

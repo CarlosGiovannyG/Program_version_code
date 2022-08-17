@@ -1,0 +1,18 @@
+query GET_DOCUMENTS(
+  $acronym:String!
+  $fileds:[String!]
+  $where:String
+){
+  documents(
+acronym:$acronym,
+fileds:$fileds,
+where:$where,
+pageSize:1500
+  ){
+    id,
+    fileds{
+      id,
+      value
+    }
+  }
+}

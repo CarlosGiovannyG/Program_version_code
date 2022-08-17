@@ -1,0 +1,11 @@
+mutation DELETE_DOCUMENT(
+$acronym:String!
+$idDocument:String!
+){
+  deleteDocument(
+    acronym:$acronym,
+    documentId:$idDocument
+  ){
+    cacheId
+  }
+}
