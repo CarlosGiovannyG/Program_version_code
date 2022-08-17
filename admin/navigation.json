@@ -1,0 +1,13 @@
+{
+  "section": "storeSetup",
+  "titleId": "admin-programversion.navigation.label-group",
+  "subSection": "ScheduleVersion",
+  "searchKeyWordsHelpers": "admin-programversion.navigation.search.kws",
+  "subSectionItems": [
+    {
+      "labelId": "admin-programversion.navigation.label-table",
+      "path": "/admin/programversion",
+      "searchKeyWordsHelpers": "admin-programversion.navigation.table.search.kws"
+    }
+  ]
+}

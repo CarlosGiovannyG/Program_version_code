@@ -1,0 +1,9 @@
+{
+  "admin-example.navigation.label-group": "Versão da programação",
+  "admin-example.navigation.label-table": "Versão da programação tabela",
+  "admin-example.navigation.search.kws": "teste, mock, fake",
+  "admin-example.navigation.details.search.kws": "detalhe, mock, test, oi",
+  "admin-example.navigation.table.search.kws": "tabela, mock, test, tchau",
+  "admin-example.hello-world": "Admin de exemplo",
+  "admin-example.details": "Admin detalhes"
+}
