@@ -1,9 +1,12 @@
 import React from "react"
 import { FormattedMessage } from "react-intl"
-import {  ButtonWithIcon, IconCalendar,IconCheck,IconFailure } from 'vtex.styleguide'
+import { ButtonWithIcon, IconCalendar, IconCheck, IconFailure } from 'vtex.styleguide'
 
-export function schemaHome(handleModal
-:any) {
+
+export function schemaHome(
+  sowModal
+
+    : any) {
   return (
     {
       properties: {
@@ -38,16 +41,16 @@ export function schemaHome(handleModal
         action: {
           title: 'action',
           width: 200,
-          cellRenderer: () => {
+          cellRenderer: ( {rowData} :any ) => {
             return (
               <div className='flex'>
                 <ButtonWithIcon
-                  onClick={handleModal}
+                  onClick={(e: any) => sowModal(e, rowData.id_existent)}
                   icon={<IconCalendar size={24} />}
                   variation='tertiary'
                 />
                 <ButtonWithIcon
-                  icon={<IconCheck size={24}/>}
+                  icon={<IconCheck size={24} />}
                   variation='secondary'
                 />
                 <ButtonWithIcon

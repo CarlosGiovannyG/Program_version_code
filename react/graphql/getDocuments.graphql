@@ -1,17 +1,17 @@
 query GET_DOCUMENTS(
   $acronym:String!
-  $fileds:[String!]
+  $fields:[String!]
   $where:String
 ){
   documents(
 acronym:$acronym,
-fileds:$fileds,
+fields:$fields,
 where:$where,
-pageSize:1500
+pageSize:1200
   ){
     id,
-    fileds{
-      id,
+    fields{
+      key,
       value
     }
   }

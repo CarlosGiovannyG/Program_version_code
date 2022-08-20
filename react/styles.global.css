@@ -6,3 +6,28 @@ body,
 .render-provider {
   height: 100%;
 }
+
+.container {
+  margin: 2rem auto;
+  width: 75%;
+}
+
+.styleTable {
+  border-style: ridge;
+  padding: .5rem;
+}
+
+.styledModal {
+  margin: 0 auto;
+  padding: 1rem;
+  min-width: 43rem;
+  max-width: 43rem;
+  min-height: 20rem;
+  overflow-y: auto;
+  background-color: rgb(239, 238, 238);
+}
+
+.containerPicker {
+  margin: 0 auto;
+  width: 60%;
+}

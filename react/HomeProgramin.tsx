@@ -1,4 +1,4 @@
-import { HomeProgramin } from "./components/HomeProgramin";
+import { HomeProgramin } from "./pages/HomeProgramin";
 
 
 export default HomeProgramin
