@@ -1,8 +1,14 @@
-import { PropsFields } from "../interfaces/interfaceData"
+import {
+  PropsFields
+} from "../interfaces/interfaceData"
 
 
 
-export const createdDocument = (createDocument: any, acronym: string, fields: PropsFields []) => {
+export const createdDocument = (
+  createDocument: any,
+  acronym: string,
+  fields: PropsFields[]
+) => {
 
   createDocument({
     variables: {

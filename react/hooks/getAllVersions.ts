@@ -1,10 +1,22 @@
-import { pathOr } from "ramda"
-import { useQuery } from "react-apollo"
-import GET_DOCUMENTS from '../graphql/getDocuments.graphql'
-import { documentSerializer } from "../utils/serializer"
+import {
+  pathOr
+} from "ramda"
+import {
+  useQuery
+} from "react-apollo"
+import GET_DOCUMENTS
+  from '../graphql/getDocuments.graphql'
+import {
+  documentSerializer
+} from "../utils/serializer"
 
-export const getAllVersions = () => {
-  const { data: dataBack, loading: loadBack, error: errBack } = useQuery(GET_DOCUMENTS, {
+export const
+ getAllVersions = () => {
+  const {
+    data: dataBack,
+    loading: loadBack,
+    error: errBack
+  } = useQuery(GET_DOCUMENTS, {
     variables: {
       acronym: "ZZ",
       fields: [
@@ -73,7 +85,6 @@ export const getAllVersions = () => {
         doneVersions.push(d)
       }
     })
-
 
   }
   return {

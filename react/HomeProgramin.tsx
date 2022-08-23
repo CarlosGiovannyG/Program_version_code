@@ -1,4 +1,6 @@
-import { HomeProgramin } from "./pages/HomeProgramin";
+import {
+  HomeProgramin
+} from "./pages/HomeProgramin";
 
 
 export default HomeProgramin
