@@ -1,66 +1,31 @@
-import React, { useState } from 'react'
-import { Table, PageBlock } from 'vtex.styleguide'
-import { useModal } from '../hooks/useModal'
-import { schemaHome } from '../schemas/schemaHome'
+import React from 'react'
 import '../styles.global.css'
-import { useQueryAllVersions } from '../hooks/useQueryAllVersions'
-import { SheduleEvent } from '../components/SheduleEvent'
+import { DoneVersions } from '../components/DoneVersions'
+import { InProgressVersion } from '../components/InProgressVersion'
+import { PendingVersions } from '../components/PendingVersions'
+import { VersionsAll } from '../components/VersionsAll'
+import { getAllVersions } from '../hooks/getAllVersions'
+
+
 
 export const HomeProgramin = () => {
-  const { handleModal, isOpen } = useModal()
-  const [idVersion, setIdVersion] = useState<string>('');
-  const { result } = useQueryAllVersions()
+  const { uniqueArray, pendingVersions } = getAllVersions()
 
-  const sowModal = (e: any, id: string) => {
-    e.preventDefault()
-
-    handleModal()
-    setIdVersion(id)
-  }
 
   return (
     <div className='container' >
-      <PageBlock
-        variation="full"
-        title="Programar Version"
-        subtitle="Promara una versión expecifica para que salga a producción"
+      <VersionsAll
+        data={uniqueArray}
+      />
+      <InProgressVersion />
+      <PendingVersions
 
-      >
-        {
-          isOpen &&
-          <SheduleEvent
-            idVersion={idVersion}
-            isOpen={true}
-            onClose={handleModal}
-          />
-        }
-        <div className="styleTable">
-          <Table
+        data={pendingVersions}
+      />
+      <DoneVersions />
 
-            schema={schemaHome(sowModal)}
-            items={result}
-            toolbar={
-              {
-                inputSearch: {
-                  placeholder: 'Busqueda'
-                },
-                density: {
-                  buttonLabel: 'Line density',
-                  lowOptionLabel: 'Low',
-                  mediumOptionLabel: 'Medium',
-                  highOptionLabel: 'High',
-                },
-                newLine: {
-                  label: "Actualizar Tabla",
-                  handleCallback: () => { }
-                }
-              }
-            }
-
-
-          />
-        </div>
-      </PageBlock>
     </div >
   )
 }
+
+

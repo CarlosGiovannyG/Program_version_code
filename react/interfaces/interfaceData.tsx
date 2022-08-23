@@ -1,5 +1,11 @@
 
-export interface PropsData {
+export interface PropsDataBack {
+  id: string
+  name: string
+}
+
+
+export interface PropsVersions {
   id_existent: string
   name: string
   actual_date: string,
@@ -17,4 +23,5 @@ export interface PropsSheduleEvent {
   onClose: Function
   isOpen: boolean
   idVersion: string
+  event: 'schedule' | 'edit' | 'delete' | 'reschedule'
 }

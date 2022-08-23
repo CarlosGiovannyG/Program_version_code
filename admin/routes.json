@@ -2,5 +2,9 @@
   "admin.app.programversion": {
     "component": "HomeProgramin",
     "path": "/admin/app/programversion"
+  },
+  "admin.app.programversion-detail": {
+    "component": "HomePrograminDetail",
+    "path": "/admin/app/programversion/detail/:id"
   }
 }

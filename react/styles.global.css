@@ -8,11 +8,13 @@ body,
 }
 
 .container {
-  margin: 2rem auto;
-  width: 75%;
+  margin: 0.25rem auto;
+  width: 90%;
 }
 
 .styleTable {
+  width: 75%;
+  margin: 0 auto;
   border-style: ridge;
   padding: .5rem;
 }
