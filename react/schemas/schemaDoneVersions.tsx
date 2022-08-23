@@ -2,13 +2,11 @@ import React from "react"
 import { Link }
   from 'vtex.render-runtime';
 import { FormattedMessage } from "react-intl"
-import { ButtonWithIcon, IconMinus, IconEdit } from 'vtex.styleguide'
+import { ButtonWithIcon, IconVisibilityOn } from 'vtex.styleguide'
 
 
 export function schemaDoneVersions(
-  sowModal
-
-    : any) {
+ ) {
   return (
     {
       properties: {
@@ -50,16 +48,10 @@ export function schemaDoneVersions(
                   to={`/admin/app/programversion/detail/${rowData.id}`}
                 >
                   <ButtonWithIcon
-                    onClick={(e: any) => sowModal(e, rowData.id_existent, 'edit')}
-                    icon={<IconEdit size={24} color={'green'} />}
+                    icon={<IconVisibilityOn size={24} color={'green'} />}
                     variation='tertiary'
                   />
                 </Link>
-                <ButtonWithIcon
-                  onClick={(e: any) => sowModal(e, rowData.id_existent, 'delete ')}
-                  icon={<IconMinus size={24} color={'red'}  />}
-                  variation='tertiary'
-                />
               </div >
             )
           }

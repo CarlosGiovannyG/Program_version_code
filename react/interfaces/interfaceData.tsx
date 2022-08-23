@@ -21,7 +21,11 @@ export interface PropsMasterVersions {
 }
 
 
-
+export interface PropsAlertInformation {
+  message: string
+  type: "success" | "error" | "warning"
+  onClose?: () => void
+}
 
 export interface PropsModalComponent {
   onClose: Function
@@ -29,9 +33,23 @@ export interface PropsModalComponent {
   children: JSX.Element | JSX.Element[]
 }
 
-export interface PropsSheduleEvent {
+export interface PropsFields {
+  key: string
+  value: string | Date
+}
+
+export interface PropsShedule {
   onClose: Function
   isOpen: boolean
   idVersion: string
-  event: 'schedule' | 'edit' | 'delete' | 'reschedule'
+}
+
+export interface PropsEditDelEventRepr {
+  data: PropsVersions
+  onClose: Function
+  isOpen: boolean
+}
+
+export interface PropsDetail {
+  params: any
 }

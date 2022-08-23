@@ -1,12 +1,31 @@
 import React from "react"
 import { FormattedMessage } from "react-intl"
-import { Link }
-  from 'vtex.render-runtime';
-import { ButtonWithIcon, IconVisibilityOn } from 'vtex.styleguide'
 
+export function schemaShedule() {
+  return (
+    {
+      properties: {
+        id_existent: {
+          // title: 'Last Publication',
+          title: <FormattedMessage
+            id="admin-programversion.header.table-name-version"
+          />,
+          width: 200,
+        },
+        name: {
+          // title: 'Name Version',
+          title: <FormattedMessage
+            id="admin-programversion.header.table-name-version"
+          />,
+          width: 200,
+        },
+      }
+    }
 
-export function schemaPendingVersions(
- ) {
+  )
+}
+
+export function schemaEditDelRepr() {
   return (
     {
       properties: {
@@ -15,7 +34,7 @@ export function schemaPendingVersions(
           title: <FormattedMessage
             id="admin-programversion.header.table-name-version"
           />,
-          width: 200,
+          width: 150,
         },
         actual_date: {
           // title: 'Name Version',
@@ -36,25 +55,7 @@ export function schemaPendingVersions(
           title: <FormattedMessage
             id="admin-programversion.header.table-name-version"
           />,
-          width: 200,
-        },
-        action: {
-          title: 'action',
-          width: 200,
-          cellRenderer: ({ rowData }: any) => {
-            return (
-              <div className='flex'>
-                <Link
-                  to={`/admin/app/programversion/detail/${rowData.id}`}
-                >
-                  <ButtonWithIcon
-                    icon={<IconVisibilityOn size={24} color={'green'} />}
-                    variation='tertiary'
-                  />
-                </Link>
-              </div >
-            )
-          }
+          width: 150,
         }
       }
     }

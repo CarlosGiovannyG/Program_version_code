@@ -1,12 +1,11 @@
 import React, { FC, useState } from 'react';
 import { PageBlock, Table } from 'vtex.styleguide'
-import '../styles.global.css'
-
 
 import { PropsAllVersions } from '../interfaces/interfaceData';
 import { schemaAllVersions } from '../schemas/schemaAllVersions';
 import { SheduleEvent } from './SheduleEvent';
 import { useModal } from '../hooks/useModal';
+import '../styles.global.css'
 
 export const AllVersions: FC<PropsAllVersions> = ({
   data
@@ -21,8 +20,6 @@ export const AllVersions: FC<PropsAllVersions> = ({
     setIdVersion(id)
   }
 
-
-
   return (
     <div>
       {
@@ -31,7 +28,6 @@ export const AllVersions: FC<PropsAllVersions> = ({
           idVersion={idVersion}
           isOpen={true}
           onClose={handleModal}
-          event='schedule'
         />
       }
       <PageBlock
