@@ -23,8 +23,6 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
     'state'
   ])
 
-  console.log('===> INFORMATION LOG', result);
-
   const handleEdit = () => {
     setIsEdit(true)
     handleModal()

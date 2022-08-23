@@ -5,8 +5,7 @@ import {  schemaEditDelRepr } from '../schemas/schemasGlobals';
 import { ModalComponent } from './ModalComponent';
 
 
-export const EditEvent: FC<PropsEditDelEventRepr> = ({ isOpen, onClose, }) => {
-
+export const EditEvent: FC<PropsEditDelEventRepr> = ({ isOpen, onClose,data }) => {
 
   return (
     <ModalComponent
@@ -14,7 +13,7 @@ export const EditEvent: FC<PropsEditDelEventRepr> = ({ isOpen, onClose, }) => {
       onClose={onClose}>
       <Table
         schema={schemaEditDelRepr()}
-      // items={result}
+      items={data}
       />
     </ModalComponent>
   );
