@@ -1,9 +1,8 @@
 
-export interface PropsDataBack {
-  id: string
+export interface DataBack {
+  id_existent: string
   name: string
 }
-
 
 export interface PropsVersions {
   id_existent: string
@@ -12,6 +11,17 @@ export interface PropsVersions {
   new_date: string
   state: 'progress' | 'pending' | 'done'
 }
+
+export interface PropsAllVersions {
+  data: DataBack
+}
+
+export interface PropsMasterVersions {
+  data: PropsVersions
+}
+
+
+
 
 export interface PropsModalComponent {
   onClose: Function

@@ -1,13 +1,10 @@
+import { pathOr } from "ramda"
 import { useQuery } from "react-apollo"
 import GET_DOCUMENTS from '../graphql/getDocuments.graphql'
 import { documentSerializer } from "../utils/serializer"
-import { pathOr } from 'ramda';
-
-
 
 export const getAllVersions = () => {
-
-  const { data: dataBack, loading: loadBAck, error: errorBack } = useQuery(GET_DOCUMENTS, {
+  const { data: dataBack, loading: loadBack, error: errBack } = useQuery(GET_DOCUMENTS, {
     variables: {
       acronym: "ZZ",
       fields: [
@@ -17,7 +14,7 @@ export const getAllVersions = () => {
     }
   })
 
-  const { data: dataMaster, loading: loadMaster, error: errorMaster } = useQuery(GET_DOCUMENTS, {
+  const { data: dataMaster, loading: loadMaster, error: errMaster } = useQuery(GET_DOCUMENTS, {
     variables: {
       acronym: "RM",
       fields: [
@@ -33,74 +30,56 @@ export const getAllVersions = () => {
   const masterData = documentSerializer(pathOr([], ['documents'], dataMaster))
 
   const backData = documentSerializer(pathOr([], ['documents'], dataBack))
-
-  let globalData: any;
+  let dataFiltered: any = []
+  let progressVersion: any = []
   const pendingVersions: any = []
+  const doneVersions: any = []
+
 
   if (
-    !loadBAck &&
+    !loadBack &&
     !loadMaster &&
-    !errorBack &&
-    !errorMaster
+    !errBack &&
+    !errMaster
   ) {
 
-    globalData = backData
-      .filter((res : any) => masterData.some((dat: any) => dat.id_existent !== res.id_existent))
+    //& FILTRANDO LAS VERSIONES QUE ESTAN EN EL BACK Y NO EN MASTER DATA
 
-    // for (let i = 0; i < backData.length; i++) {
-    //   const elementOne = backData[i];
-    //   for (let j = 0; j < masterData.length; j++) {
-    //     const elementTwo = masterData[j];
-    //     if (elementOne.id_existent !== elementTwo.id_existent) {
-    //       globalData.push(backData[i])
-    //     }
+    let aux: any = backData.filter((x: any) => {
+      for (let i = 0; i < masterData.length; i++) {
+        if (x.id_existent === masterData[i].id_existent) return x
 
-    //   }
+      }
+    })
+    dataFiltered = backData.filter((x: any) => !aux.includes(x))
 
-    // }
+    //! FILTARNDO LA VERSION QUE ESTA EN PRODUCCION
+    masterData.filter((d: any) => {
+      if (d.state === 'progress') {
+        progressVersion.push(d)
+      }
+    })
 
-    // backData.filter((d:any) => {
-    //   masterData.filter((s:any) => {
-    //     console.log(d.id_existent === s.id_existent);
-
-    //         if (d.id_existent !== s.id_existent ) {
-    //           globalData.push(d)
-    //         }
-    //     })
-    // })
-
+    //^ FILTARNDO LAS VERSIONES QUE ESTAN PENDIENTES POR SALIR A PRODUCCION
     masterData.filter((d: any) => {
       if (d.state === 'pending') {
         pendingVersions.push(d)
       }
     })
 
+    //~~ FILTARNDO LAS VERSIONES YA NO ESTAN EN PRODUCCION
+    masterData.filter((d: any) => {
+      if (d.state === 'done') {
+        doneVersions.push(d)
+      }
+    })
+
+
   }
-
-  // console.log(masterData);
-  // console.log(backData);
-
-
-  function removeDuplicates(originalArray: any, prop: string) {
-    var newArray = [];
-    var lookupObject: any = {};
-
-    for (var i in originalArray) {
-      lookupObject[originalArray[i][prop]] = originalArray[i];
-    }
-
-    for (i in lookupObject) {
-      newArray.push(lookupObject[i]);
-    }
-    return newArray;
-  }
-
-  let uniqueArray = removeDuplicates(globalData, 'id_existent')
-
   return {
-    uniqueArray,
+    dataFiltered,
     pendingVersions,
+    progressVersion,
+    doneVersions
   }
-
 }
-

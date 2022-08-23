@@ -1,13 +1,16 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState } from 'react';
 import { PageBlock, Table } from 'vtex.styleguide'
-import { useModal } from '../hooks/useModal';
-import { PropsMasterVersions } from '../interfaces/interfaceData';
-import { schemaPendingVersions } from '../schemas/schemaPendingVersions';
 import '../styles.global.css'
+
+
+import { PropsAllVersions } from '../interfaces/interfaceData';
+import { schemaAllVersions } from '../schemas/schemaAllVersions';
 import { SheduleEvent } from './SheduleEvent';
+import { useModal } from '../hooks/useModal';
 
-
-export const PendingVersions: FC<PropsMasterVersions> = ({ data }) => {
+export const AllVersions: FC<PropsAllVersions> = ({
+  data
+}) => {
   const { handleModal, isOpen } = useModal()
   const [idVersion, setIdVersion] = useState<string>('');
 
@@ -17,6 +20,8 @@ export const PendingVersions: FC<PropsMasterVersions> = ({ data }) => {
     handleModal()
     setIdVersion(id)
   }
+
+
 
   return (
     <div>
@@ -31,12 +36,12 @@ export const PendingVersions: FC<PropsMasterVersions> = ({ data }) => {
       }
       <PageBlock
         variation="full"
-        title="Pending Version"
-        subtitle="Versiones pendientes por salir a producción"
+        title="Backend Versions"
+        subtitle="Programá una versión para que salga a producción"
       >
         <div className='styleTable'>
           <Table
-            schema={schemaPendingVersions(sowModal)}
+            schema={schemaAllVersions(sowModal)}
             items={data}
           />
         </div>
@@ -44,3 +49,7 @@ export const PendingVersions: FC<PropsMasterVersions> = ({ data }) => {
     </div>
   );
 };
+
+
+
+

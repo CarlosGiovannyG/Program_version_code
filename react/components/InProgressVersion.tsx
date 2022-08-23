@@ -1,19 +1,26 @@
-import React from 'react'
-import { PageBlock } from 'vtex.styleguide'
+import React, { FC } from 'react';
+import { PageBlock, Table } from 'vtex.styleguide'
+import { PropsMasterVersions } from '../interfaces/interfaceData';
+import { schemaProgressVersions } from '../schemas/schemaProgressVersion';
+import '../styles.global.css'
 
-
-export const InProgressVersion = () => {
-
+export const InProgressVersion: FC<PropsMasterVersions> = ({ data }) => {
 
   return (
     <div>
+
       <PageBlock
         variation="full"
-        title="Progress Version"
-        subtitle="Promara una versión expecifica para que salga a producción"
+        title="Progress Versions"
+        subtitle="Version en Producción"
 
       >
-
+        <div className='styleTable'>
+          <Table
+            schema={schemaProgressVersions()}
+            items={data}
+          />
+        </div>
       </PageBlock>
     </div>
   );

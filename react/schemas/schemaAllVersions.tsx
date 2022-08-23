@@ -10,7 +10,7 @@ export function schemaAllVersions(
   return (
     {
       properties: {
-        id: {
+        id_existent: {
           // title: 'Last Publication',
           title: "ID version",
           width: 200,
@@ -20,6 +20,12 @@ export function schemaAllVersions(
           title: <FormattedMessage
             id="admin-programversion.header.table-name-version"
           />,
+          width: 200,
+        },
+        new_date: {
+          width: 200,
+        },
+        state: {
           width: 200,
         },
         action: {

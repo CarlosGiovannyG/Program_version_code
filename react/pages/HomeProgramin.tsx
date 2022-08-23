@@ -1,31 +1,31 @@
-import React from 'react'
-import '../styles.global.css'
-import { DoneVersions } from '../components/DoneVersions'
-import { InProgressVersion } from '../components/InProgressVersion'
-import { PendingVersions } from '../components/PendingVersions'
-import { VersionsAll } from '../components/VersionsAll'
-import { getAllVersions } from '../hooks/getAllVersions'
+import React, { FC } from 'react'
+import { AllVersions } from '../components/AllVersions';
+import { DoneVersions } from '../components/DoneVersions';
+import { InProgressVersion } from '../components/InProgressVersion';
+import { PendingVersions } from '../components/PendingVersions';
+import { getAllVersions } from '../hooks/getAllVersions';
 
 
-
-export const HomeProgramin = () => {
-  const { uniqueArray, pendingVersions } = getAllVersions()
-
+export const HomeProgramin: FC = () => {
+  const { dataFiltered, pendingVersions, progressVersion, doneVersions } = getAllVersions()
 
   return (
-    <div className='container' >
-      <VersionsAll
-        data={uniqueArray}
+    <div>
+
+      <AllVersions
+        data={dataFiltered}
       />
-      <InProgressVersion />
+      <InProgressVersion
+        data={progressVersion}
+      />
       <PendingVersions
-
         data={pendingVersions}
+
       />
-      <DoneVersions />
+      <DoneVersions
+        data={doneVersions}
+      />
 
-    </div >
-  )
-}
-
-
+    </div>
+  );
+};
