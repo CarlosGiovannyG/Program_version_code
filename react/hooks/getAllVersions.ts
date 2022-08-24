@@ -16,7 +16,7 @@ export const getAllVersions = () => {
   let versBack: any = []
   let dataFiltered: any = []
   let progressVersion: any = []
-  const pendingVersions: any = []
+  let pendingVersions: any = []
   const doneVersions: any = []
 
   const { data: backVers, error: errbackVers, loading: loadbackVers } = useQuery(GET_VERSIONS)
@@ -58,6 +58,8 @@ export const getAllVersions = () => {
 
   const masterData = documentSerializer(pathOr([], ['documents'], dataMaster))
 
+
+
   if (!loadMaster && !errMaster) {
     //& FILTRANDO LAS VERSIONES QUE ESTAN EN EL BACK Y NO EN MASTER DATA
     let aux: any = versBack.filter((x: any) => {
@@ -84,11 +86,22 @@ export const getAllVersions = () => {
   }
 
 
+
+  function sortByDate(a: any, b: any): Number {
+    let c: any = new Date(a.new_date)
+    let d: any = new Date(b.new_date)
+    return c - d
+  }
+
+ pendingVersions.sort(sortByDate)
+
+
   return {
     versBack,
     dataFiltered,
     pendingVersions,
     progressVersion,
-    doneVersions
+    doneVersions,
+    loadMaster
   }
 }

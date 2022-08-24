@@ -30,9 +30,7 @@ import '../styles.global.css'
 import {
   schemaShedule
 } from '../schemas/schemasGlobals';
-import {
-  format
-} from 'date-fns';
+
 import { getAllVersions } from '../hooks/getAllVersions';
 
 
@@ -53,9 +51,6 @@ export const
     const { versBack} = getAllVersions()
 
     const result = versBack.find((ele:any) => ele.id_existent === idVersion)
-
-
-console.log('===> INFORMATION LOG', result);
 
     const [createDocument] = useMutation(CREATE_DOCUMENT, {
       onCompleted: (data) => {
@@ -81,8 +76,7 @@ console.log('===> INFORMATION LOG', result);
       const newEvent = [
         {
           key: 'actual_date',
-          value: format(new Date(),
-            'yyyy-MM-dd'),
+          value: new Date(),
         },
         {
           key: 'id_existent',
@@ -94,7 +88,7 @@ console.log('===> INFORMATION LOG', result);
         },
         {
           key: 'new_date',
-          value: format(currentDate, 'yyyy-MM-dd'),
+          value: currentDate,
         },
         {
           key: 'state',
@@ -139,7 +133,7 @@ console.log('===> INFORMATION LOG', result);
               onChange={(
                 date: any
               ) => setCurrentDate(date)}
-              locale="es-ES"
+              locale="en-US"
             />
           </div>
           <div className='containerButton'>

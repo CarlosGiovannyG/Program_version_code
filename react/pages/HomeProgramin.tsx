@@ -28,7 +28,8 @@ export const HomeProgramin: FC = () => {
     dataFiltered,
     pendingVersions,
     progressVersion,
-    doneVersions
+    doneVersions,
+    loadMaster
   } = getAllVersions()
 
   useEffect(() => {
@@ -36,12 +37,9 @@ export const HomeProgramin: FC = () => {
     setVersionPend(pendingVersions)
     setVersionProgr(progressVersion)
     setVersionsDone(doneVersions)
-  }, [dataFiltered,
-    pendingVersions,
-    progressVersion,
-    doneVersions])
+  }, [loadMaster])
 
-    
+
   return (
     <div className='containerHome'>
       {versionProgr &&
