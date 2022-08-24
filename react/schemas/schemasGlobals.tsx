@@ -10,14 +10,14 @@ export function schemaShedule() {
           title: <FormattedMessage
             id="admin-programversion.header.table-name-version"
           />,
-          width: 200,
+          width: 300,
         },
         name: {
           // title: 'Name Version',
           title: <FormattedMessage
             id="admin-programversion.header.table-name-version"
           />,
-          width: 200,
+          width: 250,
         },
       }
     }

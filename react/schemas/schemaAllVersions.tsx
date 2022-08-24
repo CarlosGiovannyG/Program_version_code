@@ -13,7 +13,7 @@ export function schemaAllVersions(
         id_existent: {
           // title: 'Last Publication',
           title: "ID version",
-          width: 200,
+          width: 250,
         },
         name: {
           // title: 'Name Version',
@@ -22,15 +22,9 @@ export function schemaAllVersions(
           />,
           width: 200,
         },
-        new_date: {
-          width: 200,
-        },
-        state: {
-          width: 200,
-        },
         action: {
           title: 'action',
-          width: 200,
+          width: 150,
           cellRenderer: ({ rowData }: any) => {
             return (
               <div className='flex'>
@@ -48,3 +42,14 @@ export function schemaAllVersions(
 
   )
 }
+
+
+
+// {
+//   "latestVersion": "1",
+//     "availableVersions": [
+//       "5",
+//       "1"
+//     ],
+//       "__typename": "CMSGlobalData"
+// }

@@ -21,9 +21,6 @@ import {
 import CREATE_DOCUMENT
   from '../graphql/createDocuments.graphql'
 import {
-  getOneDocument
-} from '../hooks/getOneDocument';
-import {
   createdDocument
 } from '../hooks/useCreateDoc';
 import {
@@ -36,6 +33,7 @@ import {
 import {
   format
 } from 'date-fns';
+import { getAllVersions } from '../hooks/getAllVersions';
 
 
 export const
@@ -52,12 +50,12 @@ export const
     ] = useState(new Date())
     const [created, setCreated] = useState(false)
     const [isError, setIsError] = useState(false)
-    const { result } = getOneDocument(
-      "ZZ",
-      idVersion, [
-      'id_existent',
-      'name',
-    ])
+    const { versBack} = getAllVersions()
+
+    const result = versBack.find((ele:any) => ele.id_existent === idVersion)
+
+
+console.log('===> INFORMATION LOG', result);
 
     const [createDocument] = useMutation(CREATE_DOCUMENT, {
       onCompleted: (data) => {
@@ -88,11 +86,11 @@ export const
         },
         {
           key: 'id_existent',
-          value: result[0].id_existent
+          value: result.id_existent
         },
         {
           key: 'name',
-          value: result[0].name,
+          value: result.name,
         },
         {
           key: 'new_date',
@@ -130,7 +128,7 @@ export const
       >
         <Table
           schema={schemaShedule()}
-          items={result}
+          items={[result]}
         />
         <div className='picker'>
           <div className='containerPicker' >
