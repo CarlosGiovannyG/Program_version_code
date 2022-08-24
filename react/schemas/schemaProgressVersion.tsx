@@ -15,14 +15,14 @@ export function schemaProgressVersions() {
         new_date: {
           // title: 'Name Version',
           title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
+            id="admin-programversion.date-new"
           />,
           width: 200,
         },
         state: {
           // title: 'Name Version',
           title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
+            id="admin-programversion.state-version"
           />,
           width: 200,
         }

@@ -12,6 +12,8 @@ import {
   schemaPendingVersions
 } from '../schemas/schemaPendingVersions';
 import '../styles.global.css'
+import { FormattedMessage } from "react-intl"
+
 
 
 export const
@@ -26,8 +28,12 @@ export const
       <div>
         <PageBlock
           variation="full"
-          title="Pending Version"
-          subtitle="Versiones pendientes por salir a producción"
+          title={<FormattedMessage
+            id="admin-programversion.title-pending-version"
+          />}
+          subtitle={<FormattedMessage
+            id="admin-programversion.subtitle-pending-version"
+          />}
         >
           <div className='styleTable'>
             <Table

@@ -7,6 +7,15 @@
   "admin-programversion.header.table-state-version":"State of Version",
   "admin-programversion.header.table-new-publication":"New Publication",
 
+  "admin-programversion.header-name-version-done": "Versión already done",
+  "admin-programversion.date-actual": "Current Date",
+  "admin-programversion.date-new": "New Date",
+  "admin-programversion.state-version": "Actual State",
+
+  "admin-programversion.message-delete" : "Confirm delete",
+
+
+
 
 
 
@@ -15,5 +24,30 @@
   "admin-programversion.navigation.details.search.kws": "details, mock, test, hello",
   "admin-programversion.navigation.table.search.kws": "table, mock, test, bye",
   "admin-programversion.hello-world": "programversion Admin",
-  "admin-programversion.details": "Details page"
+  "admin-programversion.details": "Details page",
+  "admin-programversion.message-delete-loading" : "Deleting information...",
+  "admin-programversion.message-error": "There was an error....",
+  "admin-programversion.delete-button-text": "Delete version",
+  "admin-programversion.delete-confirmation": "Clicking will remove the version....",
+  "admin-programversion.title-done-version":"Versions already published",
+  "admin-programversion.subtitle-done-version": "Versions that were scheduled",
+  "admin-programversion.title-select-date": "Select date",
+  "admin-programversion.text-confirm-date": "Confirm new date",
+  "admin-programversion.title-in-progress-version": "In progress version",
+  "admin-programversion.subtitle-in-progress-version":"Production version",
+  "admin-programversion.title-pending-version": "pending version",
+  "admin-programversion.subtitle-pending-version": "Pending versions to go into production",
+  "admin-programversion.alert-update-information": "updating information...",
+  "admin-programversion.title-detail-page":"Version detail page",
+  "admin-programversion.subtitle-detail-page":"Options on the current version",
+  "admin-programversion.select-action-version":"Select action for version",
+
+
+  "admin-programversion.title-program-version": "Schedule version",
+  "admin-programversion.title-reprogram-version": "reprogram version",
+  "admin-programversion.title-delete-version": "delete version",
+  "admin-programversion.text-action": "Action",
+  "admin-programversion.title-backend-versions" : "Versions in Backend",
+  "admin-programversion.subtitle-backend-versions" : "Schedule a release to go into production"
+
 }

@@ -29,7 +29,9 @@ export function schemaAllVersions(
           width: 200,
         },
         action: {
-          title: 'action',
+          title: <FormattedMessage
+            id="admin-programversion.text-action"
+          />,
           width: 200,
           cellRenderer: ({ rowData }: any) => {
             return (

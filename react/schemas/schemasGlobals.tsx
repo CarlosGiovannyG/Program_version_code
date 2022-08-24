@@ -7,9 +7,7 @@ export function schemaShedule() {
       properties: {
         id_existent: {
           // title: 'Last Publication',
-          title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
-          />,
+          title: "ID version",
           width: 200,
         },
         name: {

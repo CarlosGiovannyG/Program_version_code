@@ -19,7 +19,9 @@ import {
 import {
   useModal
 } from '../hooks/useModal';
-import '../styles.global.css'
+import '../styles.global.css';
+import { FormattedMessage } from "react-intl"
+
 
 export const
   AllVersions: FC<PropsAllVersions> = (
@@ -49,8 +51,12 @@ export const
         }
         <PageBlock
           variation="full"
-          title="Backend Versions"
-          subtitle="Programá una versión para que salga a producción"
+          title={<FormattedMessage
+            id="admin-programversion.title-backend-versions"
+          />}
+          subtitle={<FormattedMessage
+            id="admin-programversion.subtitle-backend-versions"
+          />}
         >
           <div className='styleTable'>
             <Table

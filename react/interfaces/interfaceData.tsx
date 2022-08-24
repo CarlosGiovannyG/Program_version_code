@@ -22,8 +22,8 @@ export interface PropsMasterVersions {
 
 
 export interface PropsAlertInformation {
-  message: string
-  // message: JSX.Element | JSX.Element[]
+  // message: string
+  message: JSX.Element | JSX.Element[]
   type: "success" | "error" | "warning"
   onClose?: () => void
 }

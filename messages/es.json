@@ -10,5 +10,40 @@
   "admin-programversion.navigation.details.search.kws": "detalhe, mock, test, oi",
   "admin-programversion.navigation.table.search.kws": "tabela, mock, test, tchau",
   "admin-programversion.hello-world": "Admin de ejemplo",
-  "admin-programversion.details": "Página de detalles"
+  "admin-programversion.details": "Página de detalles",
+
+  "admin-programversion.header-name-version-done": "Versión ya realizada",
+  "admin-programversion.date-actual": "Fecha actual",
+  "admin-programversion.date-new": "Fecha nueva",
+  "admin-programversion.state-version": "Estado Actual",
+  "admin-programversion.message-delete" : "Confirmar Eliminación",
+  "admin-programversion.message-delete-loading" : "Eliminando información...",
+  "admin-programversion.message-error": "Se produjo un error....",
+  "admin-programversion.delete-button-text": "Eliminar versión",
+  "admin-programversion.delete-confirmation": "Al dar click se eliminará la version....",
+
+  "admin-programversion.title-done-version":"Versiones ya publicadas",
+  "admin-programversion.subtitle-done-version": "Versiones que fueron programadas",
+  "admin-programversion.title-select-date": "Seleccionar Fecha",
+  "admin-programversion.text-confirm-date": "Confirmar nueva Fecha",
+  "admin-programversion.title-in-progress-version": "Versión en progreso",
+  "admin-programversion.subtitle-in-progress-version":"Versión en producción",
+  "admin-programversion.title-pending-version": "Versión Pendiente",
+  "admin-programversion.subtitle-pending-version": "Versiones pendientes por salir a producción",
+  "admin-programversion.alert-update-information": "Actualizando información...",
+  "admin-programversion.title-detail-page":"Página de detalle de la versión",
+  "admin-programversion.subtitle-detail-page":"Opciones sobre la versión actual",
+  "admin-programversion.select-action-version":"Seleccione acción para la versión",
+
+
+  "admin-programversion.title-program-version": "Programar version",
+  "admin-programversion.title-reprogram-version": "Reprogramar version",
+  "admin-programversion.title-delete-version": "Eliminar version",
+  "admin-programversion.text-action": "Acción",
+  "admin-programversion.title-backend-versions" : "Versiones en Backend",
+  "admin-programversion.subtitle-backend-versions" : "Programa una versión para que salga a producción"
+
+
+
+
 }

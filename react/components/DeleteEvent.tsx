@@ -27,6 +27,7 @@ import DELETE_DOCUMENT
 import {
   AlertInformation
 } from './AlertInformation';
+import { FormattedMessage } from "react-intl"
 
 
 export const
@@ -91,13 +92,19 @@ export const
     }
     if (success) {
       return <AlertInformation
-        message='Eliminando Información....'
+        message={<FormattedMessage
+          id="admin-programversion.message-delete-loading"
+        />}
+        // message='Eliminando Información....'
         type='success'
       />
     }
     if (isError) {
       return <AlertInformation
-        message='Se produjo un error....'
+        message={<FormattedMessage
+          id="admin-programversion.message-error"
+        />}
+        // message='Se produjo un error....'
         type='error'
       />
     }
@@ -120,7 +127,10 @@ export const
                 />}
                 variation='tertiary'
               >
-                Eliminar Versión
+                <FormattedMessage
+                  id="admin-programversion.delete-button-text"
+                />
+                {/* Eliminar Versión */}
               </ButtonWithIcon>
             </div>
           </div>
@@ -130,7 +140,10 @@ export const
             isOpen={isOpen}
             onClose={onClose}>
             <AlertInformation
-              message='Al dar click se eliminará la version....'
+              message={<FormattedMessage
+                id="admin-programversion.delete-confirmation"
+              />}
+              // message='Al dar click se eliminará la version....'
               type='warning'
             />
             <div className='picker'>
@@ -143,7 +156,9 @@ export const
                   />}
                   variation='tertiary'
                 >
-                  Confirmar Eliminación
+                  <FormattedMessage
+                    id="admin-programversion.message-delete"
+                  />
                 </ButtonWithIcon>
               </div>
             </div>

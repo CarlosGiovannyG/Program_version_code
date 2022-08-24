@@ -14,5 +14,38 @@
   "admin-programversion.navigation.details.search.kws": "detalhe, mock, test, oi",
   "admin-programversion.navigation.table.search.kws": "tabela, mock, test, tchau",
   "admin-programversion.hello-world": "Admin de exemplo",
-  "admin-programversion.details": "Admin detalhes"
+  "admin-programversion.details": "Admin detalhes",
+
+  "admin-programversion.header-name-version-done": "Versão já feitaa",
+  "admin-programversion.date-actual": "Data atual",
+  "admin-programversion.date-new": "Nova Data",
+  "admin-programversion.state-version": "Estado atual",
+
+  "admin-programversion.message-delete" : "confirmar exclusão",
+  "admin-programversion.message-delete-loading" : "Excluindo informações...",
+  "admin-programversion.message-error": "Havia um erro....",
+  "admin-programversion.delete-button-text": "Excluir versão",
+  "admin-programversion.delete-confirmation": "Clicar removerá a versão....",
+  "admin-programversion.title-done-version":"Versões já publicadas",
+  "admin-programversion.subtitle-done-version": "Versões que foram agendadas",
+  "admin-programversion.title-select-date": "Selecione a data",
+  "admin-programversion.text-confirm-date": "Confirmar nova data",
+  "admin-programversion.title-in-progress-version": "Versão em andamento",
+  "admin-programversion.subtitle-in-progress-version":"Versão de produção",
+  "admin-programversion.title-pending-version": "Versão pendente",
+  "admin-programversion.subtitle-pending-version": "Versões pendentes para entrar em produção",
+  "admin-programversion.alert-update-information": "atualizando informações...",
+  "admin-programversion.title-detail-page":"Página de detalhes da versão",
+  "admin-programversion.subtitle-detail-page":"Opções na versão atual",
+  "admin-programversion.select-action-version":"Selecione a ação para a versão",
+
+
+  "admin-programversion.title-program-version": "versão do cronograma",
+  "admin-programversion.title-reprogram-version": "reprogramar versão",
+  "admin-programversion.title-delete-version": "excluir versão",
+  "admin-programversion.text-action": "Ação",
+  "admin-programversion.title-backend-versions" : "Versões no back-end",
+  "admin-programversion.subtitle-backend-versions" : "Schedule a release to go into production"
+
+
 }

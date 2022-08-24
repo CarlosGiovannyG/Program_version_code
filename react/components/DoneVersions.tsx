@@ -12,6 +12,8 @@ import '../styles.global.css'
 import {
   schemaDoneVersions
 } from '../schemas/schemaDoneVersions';
+import { FormattedMessage } from "react-intl"
+
 
 export const
   DoneVersions: FC<PropsMasterVersions> = (
@@ -24,8 +26,14 @@ export const
       <div>
         <PageBlock
           variation="full"
-          title="Done Versions"
-          subtitle="Versiones que fueron programadas"
+          title={<FormattedMessage
+            id="admin-programversion.title-done-version"
+          />}
+          // title="Done Versions"
+          subtitle={<FormattedMessage
+            id="admin-programversion.subtitle-done-version"
+          />}
+        // subtitle="Versiones que fueron programadas"
         >
           <div className='styleTable'>
             <Table
