@@ -7,6 +7,16 @@ body,
   height: 100%;
 }
 
+.containerHome {
+  margin: 0.5rem auto;
+  width: 90%;
+}
+
+.containerBlock {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .container {
   margin: 0.25rem auto;
   width: 70%;

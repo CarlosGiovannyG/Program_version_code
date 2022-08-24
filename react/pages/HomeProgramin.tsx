@@ -16,7 +16,7 @@ import {
 import {
   getAllVersions
 } from '../hooks/getAllVersions';
-
+import '../styles.global.css'
 
 export const HomeProgramin: FC = () => {
   const {
@@ -27,21 +27,27 @@ export const HomeProgramin: FC = () => {
   } = getAllVersions()
 
   return (
-    <div>
-
-      <AllVersions
-        data={dataFiltered}
-      />
-      <InProgressVersion
-        data={progressVersion}
-      />
-      <PendingVersions
-        data={pendingVersions}
-
-      />
-      <DoneVersions
-        data={doneVersions}
-      />
+    <div className='containerHome'>
+      <div className='containerBlock'>
+        <InProgressVersion
+          data={progressVersion}
+        />
+      </div>
+      <div className='containerBlock'>
+        <AllVersions
+          data={dataFiltered}
+        />
+      </div>
+      <div className='containerBlock'>
+        <PendingVersions
+          data={pendingVersions}
+        />
+      </div>
+      <div className='containerBlock'>
+        <DoneVersions
+          data={doneVersions}
+        />
+      </div>
 
     </div>
   );
