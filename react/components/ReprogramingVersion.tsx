@@ -31,6 +31,8 @@ import {
 import {
   format
 } from 'date-fns';
+import { FormattedMessage } from "react-intl"
+
 
 
 export const
@@ -117,13 +119,18 @@ export const
     }
     if (success) {
       return <AlertInformation
-        message='Actualizando Información....'
+        message={<FormattedMessage
+          id="admin-programversion.alert-update-information"
+        />}
         type='success'
       />
+
     }
     if (isError) {
       return <AlertInformation
-        message='Se produjo un error....'
+        message={<FormattedMessage
+          id="admin-programversion.message-error"
+        />}
         type='error'
       />
     }
@@ -138,7 +145,9 @@ export const
         <div className='picker'>
           <div className='containerPicker' >
             <DatePicker
-              label={<h2>Seleccionar Fecha</h2>}
+              label={<h2><FormattedMessage
+                id="admin-programversion.title-select-date"
+              /></h2>}
               minDate={new Date()}
               value={currentDate}
               onChange={(date: any) => setCurrentDate(date)}
@@ -154,7 +163,9 @@ export const
               />}
               variation='tertiary'
             >
-              Confirmar Nueva Fecha
+              <FormattedMessage
+                id="admin-programversion.text-confirm-date"
+              />
             </ButtonWithIcon>
           </div>
         </div>

@@ -13,28 +13,28 @@ export function schemaDoneVersions(
         name: {
           // title: 'Name Version',
           title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
+            id="admin-programversion.header-name-version-done"
           />,
           width: 200,
         },
         actual_date: {
           // title: 'Name Version',
           title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
+            id="admin-programversion.date-actual"
           />,
           width: 200,
         },
         new_date: {
           // title: 'Name Version',
           title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
+            id="admin-programversion.date-new"
           />,
           width: 200,
         },
         state: {
           // title: 'Name Version',
           title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
+            id="admin-programversion.state-version"
           />,
           width: 200,
         },

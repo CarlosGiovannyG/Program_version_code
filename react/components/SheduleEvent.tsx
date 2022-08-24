@@ -30,9 +30,11 @@ import '../styles.global.css'
 import {
   schemaShedule
 } from '../schemas/schemasGlobals';
-
+import {
+  format
+} from 'date-fns';
+import { FormattedMessage } from "react-intl"
 import { getAllVersions } from '../hooks/getAllVersions';
-
 
 export const
   SheduleEvent: FC<PropsShedule> = (
@@ -105,13 +107,17 @@ export const
 
     if (created) {
       return <AlertInformation
-        message='Guardando Información....'
+        message={<FormattedMessage
+          id="admin-programversion.alert-update-information"
+        />}
         type='success'
       />
     }
     if (isError) {
       return <AlertInformation
-        message='Ocurrio un error....'
+        message={<FormattedMessage
+          id="admin-programversion.message-error"
+        />}
         type='error'
       />
     }
@@ -127,7 +133,9 @@ export const
         <div className='picker'>
           <div className='containerPicker' >
             <DatePicker
-              label={<h2>Seleccionar Fecha</h2>}
+              label={<h2><FormattedMessage
+                id="admin-programversion.title-select-date"
+              /></h2>}
               minDate={new Date()}
               value={currentDate}
               onChange={(
@@ -145,7 +153,9 @@ export const
               />}
               variation='tertiary'
             >
-              Confirmar Fecha
+              <h2><FormattedMessage
+                id="admin-programversion.text-confirm-date"
+              /></h2>
             </ButtonWithIcon>
           </div>
         </div>

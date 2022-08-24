@@ -23,8 +23,10 @@ export function schemaAllVersions(
           width: 200,
         },
         action: {
-          title: 'action',
-          width: 150,
+          title: <FormattedMessage
+            id="admin-programversion.text-action"
+          />,
+          width: 200,
           cellRenderer: ({ rowData }: any) => {
             return (
               <div className='flex'>

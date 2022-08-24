@@ -31,7 +31,9 @@ import {
 import {
   schemaEditDelRepr
 } from '../schemas/schemasGlobals';
-import '../styles.global.css'
+import '../styles.global.css';
+import { FormattedMessage } from "react-intl"
+
 
 export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
   const { isOpen, handleModal } = useModal()
@@ -93,8 +95,12 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
       }
       <PageBlock
         variation="full"
-        title="Pagina de detalle de la version"
-        subtitle="Opciones sobre la versión actual"
+        title={<FormattedMessage
+          id="admin-programversion.title-detail-page"
+        />}
+        subtitle={<FormattedMessage
+          id="admin-programversion.subtitle-detail-page"
+        />}
       >
         {result &&
           <PageBlock
@@ -107,7 +113,9 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
           </PageBlock >
         }
         <PageBlock
-          subtitle="Seleccione la acción para la versión"
+          subtitle={<FormattedMessage
+            id="admin-programversion.select-action-version"
+          />}
         >
           <div className='containerButtons'>
             <ButtonWithIcon
@@ -118,7 +126,9 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
               />}
               variation='tertiary'
             >
-              Programar Version
+              <FormattedMessage
+                id="admin-programversion.title-program-version"
+              />
             </ButtonWithIcon>
             <ButtonWithIcon
               onClick={handleReprograming}
@@ -128,7 +138,9 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
               />}
               variation='tertiary'
             >
-              Reprogramar Versión
+              <FormattedMessage
+                id="admin-programversion.title-reprogram-version"
+              />
             </ButtonWithIcon>
             <ButtonWithIcon
               onClick={handleDelete}
@@ -138,7 +150,9 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
               />}
               variation='tertiary'
             >
-              Eliminar Versión
+              <FormattedMessage
+                id="admin-programversion.title-delete-version"
+              />
             </ButtonWithIcon>
           </div>
         </PageBlock >

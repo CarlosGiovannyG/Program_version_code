@@ -32,6 +32,8 @@ import {
 import {
   getOneDocument
 } from '../hooks/getOneDocument';
+import { FormattedMessage } from "react-intl"
+
 
 export const
   EditEvent: FC<PropsEditDelEventRepr> = (
@@ -145,7 +147,12 @@ export const
         <div className='picker'>
           <div className='containerPicker' >
             <DatePicker
-              label={<h2>Seleccionar Fecha</h2>}
+              label={<h2>
+                <FormattedMessage
+                  id="admin-programversion.title-select-date"
+                />
+                {/* Seleccionar Fecha */}
+              </h2>}
               minDate={new Date()}
               value={currentDate}
               onChange={(
@@ -163,7 +170,10 @@ export const
               />}
               variation='tertiary'
             >
-              Confirmar Nueva Fecha
+              <FormattedMessage
+                id="admin-programversion.text-confirm-date"
+              />
+              {/* Confirmar Nueva Fecha */}
             </ButtonWithIcon>
           </div>
         </div>

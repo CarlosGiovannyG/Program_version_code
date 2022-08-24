@@ -6,7 +6,7 @@ import { ButtonWithIcon, IconVisibilityOn } from 'vtex.styleguide'
 
 
 export function schemaPendingVersions(
- ) {
+) {
   return (
     {
       properties: {
@@ -20,26 +20,28 @@ export function schemaPendingVersions(
         actual_date: {
           // title: 'Name Version',
           title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
+            id="admin-programversion.date-actual"
           />,
           width: 200,
         },
         new_date: {
           // title: 'Name Version',
           title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
+            id="admin-programversion.date-new"
           />,
           width: 200,
         },
         state: {
           // title: 'Name Version',
           title: <FormattedMessage
-            id="admin-programversion.header.table-name-version"
+            id="admin-programversion.state-version"
           />,
           width: 200,
         },
         action: {
-          title: 'action',
+          title: <FormattedMessage
+            id="admin-programversion.text-action"
+          />,
           width: 200,
           cellRenderer: ({ rowData }: any) => {
             return (
