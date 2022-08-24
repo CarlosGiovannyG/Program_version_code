@@ -151,7 +151,7 @@ export const
               minDate={new Date()}
               value={currentDate}
               onChange={(date: any) => setCurrentDate(date)}
-              locale="es-ES"
+              locale="en-US"
             />
           </div>
           <div className='containerButton'>

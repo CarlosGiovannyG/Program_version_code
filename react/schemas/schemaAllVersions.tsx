@@ -13,19 +13,13 @@ export function schemaAllVersions(
         id_existent: {
           // title: 'Last Publication',
           title: "ID version",
-          width: 200,
+          width: 250,
         },
         name: {
           // title: 'Name Version',
           title: <FormattedMessage
             id="admin-programversion.header.table-name-version"
           />,
-          width: 200,
-        },
-        new_date: {
-          width: 200,
-        },
-        state: {
           width: 200,
         },
         action: {
@@ -50,3 +44,14 @@ export function schemaAllVersions(
 
   )
 }
+
+
+
+// {
+//   "latestVersion": "1",
+//     "availableVersions": [
+//       "5",
+//       "1"
+//     ],
+//       "__typename": "CMSGlobalData"
+// }

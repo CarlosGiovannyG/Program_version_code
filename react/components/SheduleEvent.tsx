@@ -21,9 +21,6 @@ import {
 import CREATE_DOCUMENT
   from '../graphql/createDocuments.graphql'
 import {
-  getOneDocument
-} from '../hooks/getOneDocument';
-import {
   createdDocument
 } from '../hooks/useCreateDoc';
 import {
@@ -37,8 +34,7 @@ import {
   format
 } from 'date-fns';
 import { FormattedMessage } from "react-intl"
-
-
+import { getAllVersions } from '../hooks/getAllVersions';
 
 export const
   SheduleEvent: FC<PropsShedule> = (
@@ -54,12 +50,9 @@ export const
     ] = useState(new Date())
     const [created, setCreated] = useState(false)
     const [isError, setIsError] = useState(false)
-    const { result } = getOneDocument(
-      "ZZ",
-      idVersion, [
-      'id_existent',
-      'name',
-    ])
+    const { versBack} = getAllVersions()
+
+    const result = versBack.find((ele:any) => ele.id_existent === idVersion)
 
     const [createDocument] = useMutation(CREATE_DOCUMENT, {
       onCompleted: (data) => {
@@ -85,20 +78,19 @@ export const
       const newEvent = [
         {
           key: 'actual_date',
-          value: format(new Date(),
-            'yyyy-MM-dd'),
+          value: new Date(),
         },
         {
           key: 'id_existent',
-          value: result[0].id_existent
+          value: result.id_existent
         },
         {
           key: 'name',
-          value: result[0].name,
+          value: result.name,
         },
         {
           key: 'new_date',
-          value: format(currentDate, 'yyyy-MM-dd'),
+          value: currentDate,
         },
         {
           key: 'state',
@@ -136,7 +128,7 @@ export const
       >
         <Table
           schema={schemaShedule()}
-          items={result}
+          items={[result]}
         />
         <div className='picker'>
           <div className='containerPicker' >
@@ -149,7 +141,7 @@ export const
               onChange={(
                 date: any
               ) => setCurrentDate(date)}
-              locale="es-ES"
+              locale="en-US"
             />
           </div>
           <div className='containerButton'>

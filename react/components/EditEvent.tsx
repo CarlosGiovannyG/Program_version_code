@@ -158,7 +158,7 @@ export const
               onChange={(
                 date: any
               ) => setCurrentDate(date)}
-              locale="es-ES"
+              locale="en-US"
             />
           </div>
           <div className='containerButton'>
