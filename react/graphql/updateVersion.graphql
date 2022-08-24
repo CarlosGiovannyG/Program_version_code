@@ -1,0 +1,15 @@
+mutation updateCMSGlobalData($data: ICMSGlobalData) {
+  updateCMSGlobalData(data: $data)
+  @context(provider: "jumbocolombiaio.profile-service-app")
+  {
+    success
+  }
+}
+
+# {
+#   "data": {
+#     "latestVersion": "70",
+#       "availableVersions": ["35"]
+#   }
+
+# }
