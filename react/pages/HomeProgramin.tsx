@@ -1,5 +1,5 @@
 import React, {
-  FC
+  FC, useEffect, useState
 } from 'react'
 import {
   AllVersions
@@ -16,9 +16,14 @@ import {
 import {
   getAllVersions
 } from '../hooks/getAllVersions';
+import { DataBack, PropsVersions } from '../interfaces/interfaceData';
 import '../styles.global.css'
 
 export const HomeProgramin: FC = () => {
+  const [versionsBack, setVersionsBack] = useState<DataBack>()
+  const [versionPend, setVersionPend] = useState<PropsVersions>()
+  const [versionProgr, setVersionProgr] = useState<PropsVersions>()
+  const [versionsDone, setVersionsDone] = useState<PropsVersions>()
   const {
     dataFiltered,
     pendingVersions,
@@ -26,28 +31,47 @@ export const HomeProgramin: FC = () => {
     doneVersions
   } = getAllVersions()
 
+  useEffect(() => {
+    setVersionsBack(dataFiltered)
+    setVersionPend(pendingVersions)
+    setVersionProgr(progressVersion)
+    setVersionsDone(doneVersions)
+  }, [dataFiltered,
+    pendingVersions,
+    progressVersion,
+    doneVersions])
+
+    
   return (
     <div className='containerHome'>
-      <div className='containerBlock'>
-        <InProgressVersion
-          data={progressVersion}
-        />
-      </div>
-      <div className='containerBlock'>
-        <AllVersions
-          data={dataFiltered}
-        />
-      </div>
-      <div className='containerBlock'>
-        <PendingVersions
-          data={pendingVersions}
-        />
-      </div>
-      <div className='containerBlock'>
-        <DoneVersions
-          data={doneVersions}
-        />
-      </div>
+      {versionProgr &&
+        <div className='containerBlock'>
+          <InProgressVersion
+            data={versionProgr}
+          />
+        </div>
+      }
+      {versionsBack &&
+        <div className='containerBlock'>
+          <AllVersions
+            data={versionsBack}
+          />
+        </div>
+      }
+      {versionPend &&
+        <div className='containerBlock'>
+          <PendingVersions
+            data={versionPend}
+          />
+        </div>
+      }
+      {versionsDone &&
+        <div className='containerBlock'>
+          <DoneVersions
+            data={versionsDone}
+          />
+        </div>
+      }
 
     </div>
   );
