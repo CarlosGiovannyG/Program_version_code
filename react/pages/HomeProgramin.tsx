@@ -29,15 +29,20 @@ export const HomeProgramin: FC = () => {
     pendingVersions,
     progressVersion,
     doneVersions,
-    loadMaster
+    loadMaster,
+    loadbackVers
   } = getAllVersions()
+
+  console.log('===> INFORMATION LOG dataFiltered', dataFiltered );
+  console.log('===> INFORMATION LOG pendingVersions', pendingVersions );
+  console.log('===> INFORMATION LOG progressVersion', progressVersion);
 
   useEffect(() => {
     setVersionsBack(dataFiltered)
     setVersionPend(pendingVersions)
     setVersionProgr(progressVersion)
     setVersionsDone(doneVersions)
-  }, [loadMaster])
+  }, [loadMaster, loadbackVers])
 
 
   return (

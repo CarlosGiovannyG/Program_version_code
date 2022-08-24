@@ -102,6 +102,7 @@ export const getAllVersions = () => {
     pendingVersions,
     progressVersion,
     doneVersions,
-    loadMaster
+    loadMaster,
+    loadbackVers
   }
 }
