@@ -128,9 +128,8 @@ export const
                 variation='tertiary'
               >
                 <FormattedMessage
-                  id="admin-programversion.delete-button-text"
+                  id="admin-programversion.message-delete"
                 />
-                {/* Eliminar Versión */}
               </ButtonWithIcon>
             </div>
           </div>
@@ -143,7 +142,6 @@ export const
               message={<FormattedMessage
                 id="admin-programversion.delete-confirmation"
               />}
-              // message='Al dar click se eliminará la version....'
               type='warning'
             />
             <div className='picker'>
