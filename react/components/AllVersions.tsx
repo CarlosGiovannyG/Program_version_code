@@ -33,7 +33,7 @@ export const
     const [idVersion, setIdVersion] = useState<string>('');
 
     const sowModal = (e: any, id: string) => {
-console.log(e);
+      e.preventDefault()
 
       handleModal()
       setIdVersion(id)

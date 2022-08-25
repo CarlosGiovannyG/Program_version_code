@@ -1,4 +1,4 @@
-mutation UPDATE_CMSGlobalData($data: ICMSGlobalData) {
+mutation updateCMSGlobalData($data: ICMSGlobalData) {
   updateCMSGlobalData(data: $data)
   @context(provider: "jumbocolombiaio.profile-service-app")
   {

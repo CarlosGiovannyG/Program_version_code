@@ -28,8 +28,10 @@ import UPDATE_DOCUMENT
 import {
   AlertInformation
 } from './AlertInformation';
-import { FormattedMessage } from 'react-intl';
-
+import {
+  format
+} from 'date-fns';
+import { FormattedMessage } from "react-intl"
 
 
 
@@ -93,18 +95,13 @@ export const
         },
         {
           key: 'new_date',
-          value: currentDate,
+          value: format(currentDate, 'yyyy-MM-dd'),
         },
         {
           key: 'state',
           value: 'pending'
-        },
-        {
-          key: 'num_version',
-          value: result[0].num_version
         }
       ]
-
 
       updateDocument({
         variables: {

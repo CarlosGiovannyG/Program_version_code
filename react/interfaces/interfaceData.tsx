@@ -2,16 +2,14 @@
 export interface DataBack {
   id_existent: string
   name: string
-  num_version:string
 }
 
 export interface PropsVersions {
-  id_existent?: string
-  name?: string
-  actual_date?: string,
-  new_date?: string
-  state?: 'progress' | 'pending' | 'done'
-  num_version?:string
+  id_existent: string
+  name: string
+  actual_date: string,
+  new_date: string
+  state: 'progress' | 'pending' | 'done'
 }
 
 export interface PropsAllVersions {
@@ -22,7 +20,9 @@ export interface PropsMasterVersions {
   data: PropsVersions
 }
 
+
 export interface PropsAlertInformation {
+  // message: string
   message: JSX.Element | JSX.Element[]
   type: "success" | "error" | "warning"
   onClose?: () => void
@@ -36,7 +36,7 @@ export interface PropsModalComponent {
 
 export interface PropsFields {
   key: string
-  value: string | any
+  value: string | Date
 }
 
 export interface PropsShedule {
