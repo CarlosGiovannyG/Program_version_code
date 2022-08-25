@@ -1,6 +1,5 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useMutation } from 'react-apollo';
-import { getAllVersions } from '../hooks/getAllVersions';
 import { useTaks } from '../hooks/useTaks';
 import UPDATE_DOCUMENT
   from '../graphql/updateDocuments.graphql';
@@ -11,15 +10,17 @@ import UPDATE_CMSGlobalData
 import { AlertInformation } from './AlertInformation';
 import { FormattedMessage } from 'react-intl';
 
-export const UpdateInformation = () => {
+interface Props{
+  itExist:any
+  progressVersion:any
+  pendingVersions:any
+  versionsAvailable:any
+}
+
+export const UpdateInformation = ({itExist,pendingVersions,progressVersion,versionsAvailable}:Props) => {
   const [success, setSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
-  const {
-    versionsAvailable,
-    pendingVersions,
-    progressVersion,
-    itExist
-  } = getAllVersions()
+
   const [createDocument] = useMutation(CREATE_DOCUMENT, {
     onCompleted: (data) => {
       if (data.createDocument.id) {
@@ -69,15 +70,18 @@ export const UpdateInformation = () => {
 
 
 
-    useTaks(
-      itExist,
-      createDocument,
-      updateDocument,
-      progressVersion,
-      updateCMSGlobalData,
-      pendingVersions,
-      versionsAvailable
-    )
+ useEffect(() => {
+   useTaks(
+     itExist,
+     createDocument,
+     updateDocument,
+     progressVersion,
+     updateCMSGlobalData,
+     pendingVersions,
+     versionsAvailable
+   )
+ }, [])
+
 
 
   if (success) {

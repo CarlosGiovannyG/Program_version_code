@@ -8,13 +8,16 @@ import GET_DOCUMENTS
   from '../graphql/getDocuments.graphql'
 import GET_VERSIONS
   from '../graphql/getVersions.graphql'
+import { DataBack } from "../interfaces/interfaceData"
 import {
   documentSerializer
 } from "../utils/serializer"
 
 export const getAllVersions = () => {
+
   let versionsAvailable: any = []
-  let versBack: any = []
+
+  let versBack: DataBack[]=[];
   let dataFiltered: any = []
   let progressVersionProv: any = []
   let progressVersion: any = []
@@ -22,7 +25,7 @@ export const getAllVersions = () => {
   const doneVersions: any = []
   let itExist: any;
 
-  const { data: backVers, error: errbackVers, loading: loadbackVers } = useQuery(GET_VERSIONS,{
+  const { data: backVers, error: errbackVers, loading: loadbackVers } = useQuery(GET_VERSIONS, {
     fetchPolicy: 'no-cache'
   })
 
@@ -33,7 +36,7 @@ export const getAllVersions = () => {
       name: `Version-${latestVersion}`,
       id_existent: `CMSGlobalData-lates-${latestVersion}`,
       state: 'progress',
-      num_version: Number(latestVersion)
+      num_version: latestVersion
     }
 
     progressVersionProv.push(auxLatest)
@@ -42,7 +45,7 @@ export const getAllVersions = () => {
       const auxAvai = {
         name: `Version-${availableVersions[i]}`,
         id_existent: `CMSGlobalData-available-${availableVersions[i]}`,
-        num_version: Number(availableVersions[i])
+        num_version: availableVersions[i]
       }
       versBack.push(auxAvai)
     }
@@ -91,42 +94,47 @@ export const getAllVersions = () => {
       }
     })
 
-
-    // * COMPORBANDO SI YA ESTA REGISTRADA LA VERSION
-
-    if (masterData.length && progressVersionProv.length) {
-      let auxOne = masterData.map((ele: any) => ele.num_version).includes(progressVersionProv[0].num_version)
-      itExist = auxOne
-    }
+    console.log("ANTES INCLUDES", masterData);
+    let auxOne = masterData.map((ele: any) => ele.num_version).includes(progressVersionProv[0].num_version)
+    console.log("INCLUDES", auxOne);
+    itExist = auxOne
 
 
-    if (itExist) {
-      let filteredProgress = masterData.filter((ele: any) =>ele.num_version === progressVersionProv[0].num_version
-        )
-      progressVersion = filteredProgress
-
-    }
-
-
-    if (!itExist && progressVersionProv.length) {
-      progressVersion = progressVersionProv
-
-    }
-
-
-
-    function sortByDate(a: any, b: any): Number {
-      let c: any = new Date(a.new_date)
-      let d: any = new Date(b.new_date)
-      return c - d
-    }
-
-    pendingVersions.sort(sortByDate)
 
   }
 
+  // * COMPORBANDO SI YA ESTA REGISTRADA LA VERSION
+
+  // if (masterData.length && progressVersionProv.length) {
+
+  //   let auxOne = masterData.map((ele: any) => ele.num_version).includes(progressVersionProv[0].num_version)
+  //   console.log("INCLUDES", auxOne);
+  //   itExist = auxOne
+  // }
+
+
+  if (itExist) {
+    let filteredProgress = masterData.filter((ele: any) => ele.num_version === progressVersionProv[0].num_version
+    )
+    progressVersion = filteredProgress
+  }
+
+  if (!itExist && progressVersionProv.length) {
+    progressVersion = progressVersionProv
+
+  }
+
+
+  function sortByDate(a: any, b: any): Number {
+    let c: any = new Date(a.new_date)
+    let d: any = new Date(b.new_date)
+    return c - d
+  }
+
+  pendingVersions.sort(sortByDate)
+
   console.log(
-    "versBack All", versBack,itExist
+    "versBack All", versBack, itExist
   );
 
 

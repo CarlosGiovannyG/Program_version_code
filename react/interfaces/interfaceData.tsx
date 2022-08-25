@@ -2,6 +2,7 @@
 export interface DataBack {
   id_existent: string
   name: string
+  num_version:string
 }
 
 export interface PropsVersions {

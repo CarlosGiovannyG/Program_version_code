@@ -36,7 +36,9 @@ export const getVersionsBack = () => {
     setVersionAvailable(availableVersions)
 
   }
-  console.log('===> INFORMATION LOG VERSION BACK', versBack,
+  console.log('===> INFORMATION LOG VERSION BACK',
+    error,
+  versBack,
     latesVersion,
     versionAvailable );
 

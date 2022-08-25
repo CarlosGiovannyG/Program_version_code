@@ -49,7 +49,11 @@ export const
     const [isError, setIsError] = useState(false)
     const { versBack } = getAllVersions()
 
-    const result = versBack.find((ele: any) => ele.id_existent === idVersion)
+    let result: any;
+
+    if (versBack.length) {
+      result = versBack.find((ele: any) => ele.id_existent === idVersion)
+    }
 
     console.log('===> INFORMATION LOG result', result, versBack);
 

@@ -30,7 +30,7 @@ export const useTaks =  (
   }
 
   console.log("exist", exist);
-  console.log("versionPend", versionPend[0]);
+  console.log("versionPend", versionPend);
   console.log("updateDocument", updateDocument);
   console.log("createDocument", createDocument);
   console.log("updateCMSGlobalData", updateCMSGlobalData);
