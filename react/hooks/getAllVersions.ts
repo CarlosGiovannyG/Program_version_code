@@ -13,35 +13,41 @@ import {
 } from "../utils/serializer"
 
 export const getAllVersions = () => {
+  let versionsAvailable: any = []
   let versBack: any = []
   let dataFiltered: any = []
+  let progressVersionProv: any = []
   let progressVersion: any = []
   let pendingVersions: any = []
   const doneVersions: any = []
+  let itExist: any;
 
-  const { data: backVers, error: errbackVers, loading: loadbackVers } = useQuery(GET_VERSIONS)
-
+  const { data: backVers, error: errbackVers, loading: loadbackVers } = useQuery(GET_VERSIONS,{
+    fetchPolicy: 'no-cache'
+  })
 
   if (!errbackVers && !loadbackVers) {
     const { availableVersions } = backVers.getCMSGlobalData
     const { latestVersion } = backVers.getCMSGlobalData
     const auxLatest = {
-      name: `Version - ${latestVersion}`,
+      name: `Version-${latestVersion}`,
       id_existent: `CMSGlobalData-lates-${latestVersion}`,
-      state: 'progress'
+      state: 'progress',
+      num_version: Number(latestVersion)
     }
-    progressVersion.push(auxLatest)
 
+    progressVersionProv.push(auxLatest)
 
     for (let i = 0; i < availableVersions.length; i++) {
       const auxAvai = {
         name: `Version-${availableVersions[i]}`,
         id_existent: `CMSGlobalData-available-${availableVersions[i]}`,
+        num_version: Number(availableVersions[i])
       }
       versBack.push(auxAvai)
     }
+    versionsAvailable = availableVersions
   }
-
 
   const { data: dataMaster, loading: loadMaster, error: errMaster } = useQuery(GET_DOCUMENTS, {
     variables: {
@@ -52,12 +58,13 @@ export const getAllVersions = () => {
         'name',
         'new_date',
         'state',
+        "num_version"
       ]
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
 
   const masterData = documentSerializer(pathOr([], ['documents'], dataMaster))
-
 
 
   if (!loadMaster && !errMaster) {
@@ -83,26 +90,55 @@ export const getAllVersions = () => {
         doneVersions.push(d)
       }
     })
+
+
+    // * COMPORBANDO SI YA ESTA REGISTRADA LA VERSION
+
+    if (masterData.length && progressVersionProv.length) {
+      let auxOne = masterData.map((ele: any) => ele.num_version).includes(progressVersionProv[0].num_version)
+      itExist = auxOne
+    }
+
+
+    if (itExist) {
+      let filteredProgress = masterData.filter((ele: any) =>ele.num_version === progressVersionProv[0].num_version
+        )
+      progressVersion = filteredProgress
+
+    }
+
+
+    if (!itExist && progressVersionProv.length) {
+      progressVersion = progressVersionProv
+
+    }
+
+
+
+    function sortByDate(a: any, b: any): Number {
+      let c: any = new Date(a.new_date)
+      let d: any = new Date(b.new_date)
+      return c - d
+    }
+
+    pendingVersions.sort(sortByDate)
+
   }
 
-
-
-  function sortByDate(a: any, b: any): Number {
-    let c: any = new Date(a.new_date)
-    let d: any = new Date(b.new_date)
-    return c - d
-  }
-
- pendingVersions.sort(sortByDate)
+  console.log(
+    "versBack All", versBack,itExist
+  );
 
 
   return {
+    versionsAvailable,
     versBack,
     dataFiltered,
     pendingVersions,
     progressVersion,
     doneVersions,
     loadMaster,
-    loadbackVers
+    loadbackVers,
+    itExist
   }
 }

@@ -1,81 +1,66 @@
 import React, {
   FC, useEffect, useState
 } from 'react'
-import {
-  AllVersions
-} from '../components/AllVersions';
-import {
-  DoneVersions
-} from '../components/DoneVersions';
+import { AllVersions } from '../components/AllVersions';
+import { DoneVersions } from '../components/DoneVersions';
 import {
   InProgressVersion
 } from '../components/InProgressVersion';
 import {
   PendingVersions
 } from '../components/PendingVersions';
-import {
-  getAllVersions
-} from '../hooks/getAllVersions';
-import { DataBack, PropsVersions } from '../interfaces/interfaceData';
+import { getAllVersions } from '../hooks/getAllVersions';
 import '../styles.global.css'
+import { useHourPrograming } from '../hooks/useHourPrograming';
+// import { UpdateInformation } from '../components/UpdateInformation';
 
 export const HomeProgramin: FC = () => {
-  const [versionsBack, setVersionsBack] = useState<DataBack>()
-  const [versionPend, setVersionPend] = useState<PropsVersions>()
-  const [versionProgr, setVersionProgr] = useState<PropsVersions>()
-  const [versionsDone, setVersionsDone] = useState<PropsVersions>()
+  const [updateInfo, setUpdateInfo] = useState(false)
+
   const {
     dataFiltered,
     pendingVersions,
     progressVersion,
     doneVersions,
-    loadMaster,
-    loadbackVers
   } = getAllVersions()
 
-  console.log('===> INFORMATION LOG dataFiltered', dataFiltered );
-  console.log('===> INFORMATION LOG pendingVersions', pendingVersions );
-  console.log('===> INFORMATION LOG progressVersion', progressVersion);
+
+  let hora = new Date()
 
   useEffect(() => {
-    setVersionsBack(dataFiltered)
-    setVersionPend(pendingVersions)
-    setVersionProgr(progressVersion)
-    setVersionsDone(doneVersions)
-  }, [loadMaster, loadbackVers])
+    setTimeout(() => {
+      setUpdateInfo(true)
+      console.log('===> INFORMATION OF FUUC', useHourPrograming(), hora);
+    }, useHourPrograming());
+  }, [])
 
-
+  if (updateInfo) {
+    setTimeout(() => {
+      setUpdateInfo(false)
+    }, 5000)
+  }
   return (
     <div className='containerHome'>
-      {versionProgr &&
-        <div className='containerBlock'>
-          <InProgressVersion
-            data={versionProgr}
-          />
-        </div>
-      }
-      {versionsBack &&
-        <div className='containerBlock'>
-          <AllVersions
-            data={versionsBack}
-          />
-        </div>
-      }
-      {versionPend &&
-        <div className='containerBlock'>
-          <PendingVersions
-            data={versionPend}
-          />
-        </div>
-      }
-      {versionsDone &&
-        <div className='containerBlock'>
-          <DoneVersions
-            data={versionsDone}
-          />
-        </div>
-      }
-
+      <div className='containerBlock'>
+        <InProgressVersion
+          data={progressVersion}
+        />
+      </div>
+      <div className='containerBlock'>
+        <AllVersions
+          data={dataFiltered}
+        />
+      </div>
+      <div className='containerBlock'>
+        <PendingVersions
+          data={pendingVersions}
+        />
+      </div>
+      <div className='containerBlock'>
+        <DoneVersions
+          data={doneVersions}
+        />
+      </div>
     </div>
   );
 };

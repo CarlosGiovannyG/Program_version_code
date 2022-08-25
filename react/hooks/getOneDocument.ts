@@ -31,7 +31,8 @@ export const getOneDocument = (
       acronym: acronym,
       fields: fields,
       where: where
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
 
   const result = documentSerializer(

@@ -30,9 +30,6 @@ import '../styles.global.css'
 import {
   schemaShedule
 } from '../schemas/schemasGlobals';
-import {
-  format
-} from 'date-fns';
 import { FormattedMessage } from "react-intl"
 import { getAllVersions } from '../hooks/getAllVersions';
 
@@ -50,9 +47,11 @@ export const
     ] = useState(new Date())
     const [created, setCreated] = useState(false)
     const [isError, setIsError] = useState(false)
-    const { versBack} = getAllVersions()
+    const { versBack } = getAllVersions()
 
-    const result = versBack.find((ele:any) => ele.id_existent === idVersion)
+    const result = versBack.find((ele: any) => ele.id_existent === idVersion)
+
+    console.log('===> INFORMATION LOG result', result, versBack);
 
     const [createDocument] = useMutation(CREATE_DOCUMENT, {
       onCompleted: (data) => {
@@ -72,6 +71,8 @@ export const
 
       }
     })
+
+    console.log('===> INFORMATION LOGresult', result);
 
     const handleClick = () => {
 
@@ -95,6 +96,10 @@ export const
         {
           key: 'state',
           value: 'pending'
+        },
+        {
+          key: 'num_version',
+          value: result.num_version
         }
       ]
 
