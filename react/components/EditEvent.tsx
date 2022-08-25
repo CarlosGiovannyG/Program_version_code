@@ -107,6 +107,10 @@ export const
         {
           key: 'state',
           value: 'pending'
+        },
+        {
+          key: 'num_version',
+          value: result[0].num_version
         }
       ]
 
@@ -118,7 +122,6 @@ export const
           }
         }
       })
-
       setTimeout(() => {
         onClose()
       }, 4000);
