@@ -1,5 +1,5 @@
 import React, {
-  FC, useEffect, useState
+  FC,
 } from 'react'
 import {
   AllVersions
@@ -16,66 +16,39 @@ import {
 import {
   getAllVersions
 } from '../hooks/getAllVersions';
-import { DataBack, PropsVersions } from '../interfaces/interfaceData';
 import '../styles.global.css'
 
 export const HomeProgramin: FC = () => {
-  const [versionsBack, setVersionsBack] = useState<DataBack>()
-  const [versionPend, setVersionPend] = useState<PropsVersions>()
-  const [versionProgr, setVersionProgr] = useState<PropsVersions>()
-  const [versionsDone, setVersionsDone] = useState<PropsVersions>()
   const {
     dataFiltered,
     pendingVersions,
     progressVersion,
     doneVersions,
-    loadMaster,
-    loadbackVers
   } = getAllVersions()
-
-  console.log('===> INFORMATION LOG dataFiltered', dataFiltered );
-  console.log('===> INFORMATION LOG pendingVersions', pendingVersions );
-  console.log('===> INFORMATION LOG progressVersion', progressVersion);
-
-  useEffect(() => {
-    setVersionsBack(dataFiltered)
-    setVersionPend(pendingVersions)
-    setVersionProgr(progressVersion)
-    setVersionsDone(doneVersions)
-  }, [loadMaster, loadbackVers])
 
 
   return (
     <div className='containerHome'>
-      {versionProgr &&
         <div className='containerBlock'>
           <InProgressVersion
-            data={versionProgr}
+            data={progressVersion}
           />
         </div>
-      }
-      {versionsBack &&
         <div className='containerBlock'>
           <AllVersions
-            data={versionsBack}
+            data={dataFiltered}
           />
         </div>
-      }
-      {versionPend &&
         <div className='containerBlock'>
           <PendingVersions
-            data={versionPend}
+            data={pendingVersions}
           />
         </div>
-      }
-      {versionsDone &&
         <div className='containerBlock'>
           <DoneVersions
-            data={versionsDone}
+            data={doneVersions}
           />
         </div>
-      }
-
     </div>
   );
 };

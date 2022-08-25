@@ -30,9 +30,6 @@ import '../styles.global.css'
 import {
   schemaShedule
 } from '../schemas/schemasGlobals';
-import {
-  format
-} from 'date-fns';
 import { FormattedMessage } from "react-intl"
 import { getAllVersions } from '../hooks/getAllVersions';
 

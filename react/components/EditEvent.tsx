@@ -126,13 +126,17 @@ export const
     }
     if (success) {
       return <AlertInformation
-        message='Actualizando Información....'
+        message={<FormattedMessage
+          id="admin-programversion.alert-update-information"
+        />}
         type='success'
       />
     }
     if (isError) {
       return <AlertInformation
-        message='Se produjo un error....'
+        message={<FormattedMessage
+          id="admin-programversion.message-error"
+        />}
         type='error'
       />
     }
