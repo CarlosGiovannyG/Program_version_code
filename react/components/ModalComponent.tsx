@@ -1,20 +1,13 @@
 import React from 'react';
-import {
-  Modal
-} from 'vtex.styleguide'
-import {
-  PropsModalComponent
-} from '../interfaces/interfaceData';
+import { Modal } from 'vtex.styleguide'
+import { PropsModalComponent }
+  from '../interfaces/interfaceData';
 import '../styles.global.css'
 
 
 export const
   ModalComponent = (
-    {
-      children,
-      onClose,
-      isOpen
-    }: PropsModalComponent) => {
+    { children, onClose, isOpen }: PropsModalComponent) => {
 
     return (
       <Modal

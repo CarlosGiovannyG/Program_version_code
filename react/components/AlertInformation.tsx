@@ -1,21 +1,12 @@
-import React, {
-  FC
-} from 'react'
-import {
-  Alert
-} from 'vtex.styleguide'
-import {
-  PropsAlertInformation
-} from '../interfaces/interfaceData'
+import React, { FC } from 'react'
+import { Alert } from 'vtex.styleguide'
+import { PropsAlertInformation }
+  from '../interfaces/interfaceData'
 
 
 export const
   AlertInformation: FC<PropsAlertInformation> = (
-    {
-      message,
-      type,
-      onClose
-    }) => {
+    { message, type, onClose }) => {
 
     return (
       <div>

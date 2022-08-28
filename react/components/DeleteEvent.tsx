@@ -1,42 +1,24 @@
-import React, {
-  FC,
-  useState
-} from 'react'
-import {
-  useMutation
-} from 'react-apollo';
+import React, { FC, useState } from 'react'
+import { useMutation } from 'react-apollo';
 import {
   Table,
   ButtonWithIcon,
   IconCheck
 } from 'vtex.styleguide'
-import {
-  getOneDocument
-} from '../hooks/getOneDocument';
-import {
-  PropsEditDelEventRepr
-} from '../interfaces/interfaceData';
-import {
-  schemaEditDelRepr
-} from '../schemas/schemasGlobals';
-import {
-  ModalComponent
-} from './ModalComponent';
+import { getOneDocument } from '../hooks/getOneDocument';
+import { PropsEditDelEventRepr }
+  from '../interfaces/interfaceData';
+import { schemaEditDelRepr } from '../schemas/schemasGlobals';
+import { ModalComponent } from './ModalComponent';
 import DELETE_DOCUMENT
   from '../graphql/deleteDocuments.graphql'
-import {
-  AlertInformation
-} from './AlertInformation';
+import { AlertInformation } from './AlertInformation';
 import { FormattedMessage } from "react-intl"
 
 
 export const
   DeleteEvent: FC<PropsEditDelEventRepr> = (
-    {
-      isOpen,
-      onClose,
-      idVersion
-    }
+    { isOpen, onClose, idVersion }
   ) => {
     const [success, setSuccess] = useState(false)
     const [isError, setIsError] = useState(false)

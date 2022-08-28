@@ -1,48 +1,25 @@
-import React, {
-  FC,
-  useState
-} from 'react'
-import {
-  useMutation
-} from 'react-apollo';
+import React, { FC, useState } from 'react'
+import { useMutation } from 'react-apollo';
 import {
   Table,
   DatePicker,
   ButtonWithIcon,
   IconCheck
 } from 'vtex.styleguide'
-import {
-  getOneDocument
-} from '../hooks/getOneDocument';
-import {
-  PropsEditDelEventRepr
-} from '../interfaces/interfaceData';
-import {
-  schemaEditDelRepr
-} from '../schemas/schemasGlobals';
-import {
-  ModalComponent
-} from './ModalComponent';
+import { getOneDocument } from '../hooks/getOneDocument';
+import { PropsEditDelEventRepr }
+  from '../interfaces/interfaceData';
+import { schemaEditDelRepr } from '../schemas/schemasGlobals';
+import { ModalComponent } from './ModalComponent';
 import UPDATE_DOCUMENT
   from '../graphql/updateDocuments.graphql'
-import {
-  AlertInformation
-} from './AlertInformation';
-import {
-  format
-} from 'date-fns';
+import { AlertInformation } from './AlertInformation';
+import { format } from 'date-fns';
 import { FormattedMessage } from "react-intl"
-
-
 
 export const
   ReprogramingVersion: FC<PropsEditDelEventRepr> = (
-    {
-      isOpen,
-      onClose,
-      idVersion
-    }
-  ) => {
+    { isOpen, onClose, idVersion }) => {
     const [success, setSuccess] = useState(false)
     const [isError, setIsError] = useState(false)
     const [currentDate, setCurrentDate] = useState(new Date())

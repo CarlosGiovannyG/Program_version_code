@@ -1,22 +1,11 @@
-import {
-  useQuery
-} from "react-apollo"
+import { useQuery } from "react-apollo"
 import GET_DOCUMENTS
   from '../graphql/getDocuments.graphql'
-import {
-  documentSerializer
-} from "../utils/serializer"
-import {
-  pathOr
-} from 'ramda';
-
-
+import { documentSerializer } from "../utils/serializer"
+import { pathOr } from 'ramda';
 
 export const getOneDocument = (
-  acronym: string,
-  idVersion: string,
-  fields: string[]
-) => {
+  acronym: string, idVersion: string, fields: string[]) => {
   let where;
 
   if (acronym === "ZZ") {
@@ -34,8 +23,7 @@ export const getOneDocument = (
     }
   })
 
-  const result = documentSerializer(
-    pathOr([], ['documents'], data)
+  const result = documentSerializer(pathOr([], ['documents'], data)
   )
 
   return {

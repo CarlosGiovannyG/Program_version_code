@@ -1,7 +1,4 @@
-import React, {
-  FC,
-  useState
-} from 'react'
+import React, { FC, useState } from 'react'
 import {
   PageBlock,
   ButtonWithIcon,
@@ -10,39 +7,23 @@ import {
   IconDelete,
   Table
 } from 'vtex.styleguide'
-import {
-  DeleteEvent
-} from '../components/DeleteEvent';
-import {
-  EditEvent
-} from '../components/EditEvent';
-import {
-  ReprogramingVersion
-} from '../components/ReprogramingVersion';
-import {
-  getOneDocument
-} from '../hooks/getOneDocument';
-import {
-  useModal
-} from '../hooks/useModal';
-import {
-  PropsDetail
-} from '../interfaces/interfaceData';
-import {
-  schemaEditDelRepr
-} from '../schemas/schemasGlobals';
-import '../styles.global.css';
+import { DeleteEvent } from '../components/DeleteEvent';
+import { EditEvent } from '../components/EditEvent';
+import { ReprogramingVersion }
+  from '../components/ReprogramingVersion';
+import { getOneDocument } from '../hooks/getOneDocument';
+import { useModal } from '../hooks/useModal';
+import { PropsDetail } from '../interfaces/interfaceData';
+import { schemaEditDelRepr } from '../schemas/schemasGlobals';
 import { FormattedMessage } from "react-intl"
+import '../styles.global.css';
 
 
 export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
   const { isOpen, handleModal } = useModal()
   const [isEdit, setIsEdit] = useState(false)
   const [isDelete, setIsDelete] = useState(false)
-  const [
-    reprograming,
-    setReprograming
-  ] = useState(false)
+  const [reprograming, setReprograming] = useState(false)
   const { result } = getOneDocument(
     "RM",
     params.id, [
@@ -70,7 +51,6 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
   return (
     <div className='container'>
       {isEdit &&
-
         <EditEvent
           isOpen={isOpen}
           onClose={handleModal}
@@ -78,7 +58,6 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
         />
       }
       {isDelete &&
-
         <DeleteEvent
           isOpen={isOpen}
           onClose={handleModal}
@@ -86,7 +65,6 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
         />
       }
       {reprograming &&
-
         <ReprogramingVersion
           isOpen={isOpen}
           onClose={handleModal}

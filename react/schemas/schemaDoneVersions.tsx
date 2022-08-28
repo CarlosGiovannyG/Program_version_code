@@ -1,12 +1,11 @@
 import React from "react"
-import { Link }
-  from 'vtex.render-runtime';
+import { Link } from 'vtex.render-runtime';
 import { FormattedMessage } from "react-intl"
-import { ButtonWithIcon, IconVisibilityOn } from 'vtex.styleguide'
+import { ButtonWithIcon, IconVisibilityOn }
+  from 'vtex.styleguide'
 
 
-export function schemaDoneVersions(
- ) {
+export function schemaDoneVersions() {
   return (
     {
       properties: {

@@ -30,7 +30,6 @@ export const documentSerializer = (documents: any) => {
 
     return acumulador
 
-
   }
   return documents.reduce(documentReducer, [])
 

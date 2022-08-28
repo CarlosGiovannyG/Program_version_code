@@ -1,16 +1,14 @@
-import {
-  useState
-} from "react"
+import { useState } from "react"
 
 export const useModal = () => {
-const [isOpen, setIsOpen] = useState(false);
-const handleModal=()=>{
-  setIsOpen(!isOpen)
-}
+  const [isOpen, setIsOpen] = useState(false);
+  const handleModal = () => {
+    setIsOpen(!isOpen)
+  }
 
   return {
-isOpen,
-handleModal
+    isOpen,
+    handleModal
 
   }
 }

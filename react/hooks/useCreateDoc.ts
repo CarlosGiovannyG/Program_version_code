@@ -1,8 +1,4 @@
-import {
-  PropsFields
-} from "../interfaces/interfaceData"
-
-
+import {  PropsFields} from "../interfaces/interfaceData"
 
 export const createdDocument = (
   createDocument: any,

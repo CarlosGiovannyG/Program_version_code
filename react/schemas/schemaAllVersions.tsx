@@ -2,11 +2,8 @@ import React from "react"
 import { FormattedMessage } from "react-intl"
 import { ButtonWithIcon, IconCalendar } from 'vtex.styleguide'
 
+export function schemaAllVersions(sowModal: any) {
 
-export function schemaAllVersions(
-  sowModal
-
-    : any) {
   return (
     {
       properties: {
@@ -44,14 +41,3 @@ export function schemaAllVersions(
 
   )
 }
-
-
-
-// {
-//   "latestVersion": "1",
-//     "availableVersions": [
-//       "5",
-//       "1"
-//     ],
-//       "__typename": "CMSGlobalData"
-// }

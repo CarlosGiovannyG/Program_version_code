@@ -1,55 +1,32 @@
-import React, {
-  FC,
-  useState
-} from 'react'
-import {
-  useMutation
-} from 'react-apollo';
+import React, { FC, useState } from 'react'
+import { useMutation } from 'react-apollo';
 import {
   DatePicker,
   ButtonWithIcon,
   IconCheck,
   Table
 } from 'vtex.styleguide'
-
-import {
-  PropsShedule
-} from '../interfaces/interfaceData';
-import {
-  ModalComponent
-} from './ModalComponent';
+import { PropsShedule } from '../interfaces/interfaceData';
+import { ModalComponent } from './ModalComponent';
 import CREATE_DOCUMENT
   from '../graphql/createDocuments.graphql'
-import {
-  createdDocument
-} from '../hooks/useCreateDoc';
-import {
-  AlertInformation
-} from './AlertInformation';
-import '../styles.global.css'
-import {
-  schemaShedule
-} from '../schemas/schemasGlobals';
+import { createdDocument } from '../hooks/useCreateDoc';
+import { AlertInformation } from './AlertInformation';
+import { schemaShedule } from '../schemas/schemasGlobals';
 import { FormattedMessage } from "react-intl"
 import { getAllVersions } from '../hooks/getAllVersions';
+import '../styles.global.css'
 
 export const
   SheduleEvent: FC<PropsShedule> = (
-    {
-      isOpen,
-      onClose,
-      idVersion
-    }
-  ) => {
-    const [
-      currentDate,
-      setCurrentDate
-    ] = useState(new Date())
+    { isOpen, onClose, idVersion }) => {
+    const [currentDate, setCurrentDate ] = useState(new Date())
     const [created, setCreated] = useState(false)
     const [isError, setIsError] = useState(false)
-    const { versBack} = getAllVersions()
+    const { versBack } = getAllVersions()
 
-    const result = versBack.find((ele:any) => ele.id_existent === idVersion)
+    const result = versBack.find(
+      (ele: any) => ele.id_existent === idVersion)
 
     const [createDocument] = useMutation(CREATE_DOCUMENT, {
       onCompleted: (data) => {
@@ -92,6 +69,10 @@ export const
         {
           key: 'state',
           value: 'pending'
+        },
+        {
+          key: 'num_version',
+          value: result.num_version
         }
       ]
 

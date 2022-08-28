@@ -1,18 +1,11 @@
-import React, {
-  FC
-} from 'react'
-import {
-  PropsMasterVersions
-} from '../interfaces/interfaceData';
-import {
-  PageBlock,
-  Table
-} from 'vtex.styleguide'
-import '../styles.global.css'
-import {
-  schemaDoneVersions
-} from '../schemas/schemaDoneVersions';
+import React, { FC } from 'react'
+import { PropsMasterVersions }
+  from '../interfaces/interfaceData';
+import { PageBlock, Table } from 'vtex.styleguide'
+import { schemaDoneVersions }
+  from '../schemas/schemaDoneVersions';
 import { FormattedMessage } from "react-intl"
+import '../styles.global.css'
 
 
 export const

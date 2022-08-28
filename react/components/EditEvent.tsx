@@ -1,53 +1,30 @@
-import React, {
-  FC,
-  useState
-} from 'react'
-import {
-  useMutation
-} from 'react-apollo';
+import React, { FC, useState } from 'react'
+import { useMutation } from 'react-apollo';
 import {
   Table,
   DatePicker,
   ButtonWithIcon,
   IconCheck
 } from 'vtex.styleguide'
-import {
-  format
-} from 'date-fns'
+import { format } from 'date-fns'
 import UPDATE_DOCUMENT
   from '../graphql/updateDocuments.graphql'
-import {
-  PropsEditDelEventRepr
-} from '../interfaces/interfaceData';
-import {
-  schemaEditDelRepr
-} from '../schemas/schemasGlobals';
-import {
-  ModalComponent
-} from './ModalComponent';
-import '../styles.global.css'
-import {
-  AlertInformation
-} from './AlertInformation';
-import {
-  getOneDocument
-} from '../hooks/getOneDocument';
+import { PropsEditDelEventRepr }
+  from '../interfaces/interfaceData';
+import { schemaEditDelRepr } from '../schemas/schemasGlobals';
+import { ModalComponent } from './ModalComponent';
+import { AlertInformation } from './AlertInformation';
+import { getOneDocument } from '../hooks/getOneDocument';
 import { FormattedMessage } from "react-intl"
+import '../styles.global.css'
 
 
 export const
   EditEvent: FC<PropsEditDelEventRepr> = (
-    {
-      isOpen,
-      onClose,
-      idVersion
-    }
+    { isOpen, onClose, idVersion }
   ) => {
     const [success, setSuccess] = useState(false)
-    const [
-      currentDate,
-      setCurrentDate
-    ] = useState(new Date())
+    const [currentDate, setCurrentDate] = useState(new Date())
     const [isError, setIsError] = useState(false)
     const { result } = getOneDocument(
       "RM",

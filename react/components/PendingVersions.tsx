@@ -1,28 +1,18 @@
-import React, {
-  FC
-} from 'react'
-import {
-  PageBlock,
-  Table
-} from 'vtex.styleguide'
+import React, { FC } from 'react'
+import { PageBlock, Table } from 'vtex.styleguide'
 import {
   PropsMasterVersions
 } from '../interfaces/interfaceData';
-import {
-  schemaPendingVersions
-} from '../schemas/schemaPendingVersions';
-import '../styles.global.css'
+import { schemaPendingVersions }
+  from '../schemas/schemaPendingVersions';
 import { FormattedMessage } from "react-intl"
+import '../styles.global.css'
 
 
 
 export const
   PendingVersions: FC<PropsMasterVersions> = (
-    {
-      data
-    }
-  ) => {
-
+    { data }) => {
 
     return (
       <div>
