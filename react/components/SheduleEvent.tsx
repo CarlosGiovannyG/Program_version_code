@@ -4,7 +4,8 @@ import {
   DatePicker,
   ButtonWithIcon,
   IconCheck,
-  Table
+  Table,
+  Alert
 } from 'vtex.styleguide'
 import { PropsShedule } from '../interfaces/interfaceData';
 import { ModalComponent } from './ModalComponent';
@@ -16,6 +17,7 @@ import { schemaShedule } from '../schemas/schemasGlobals';
 import { FormattedMessage } from "react-intl"
 import { getAllVersions } from '../hooks/getAllVersions';
 import '../styles.global.css'
+import axios from 'axios';
 
 export const
   SheduleEvent: FC<PropsShedule> = (
@@ -23,6 +25,7 @@ export const
     const [currentDate, setCurrentDate ] = useState(new Date())
     const [created, setCreated] = useState(false)
     const [isError, setIsError] = useState(false)
+    const [message,setMesagge ] = useState("")
     const { versBack } = getAllVersions()
 
     const result = versBack.find(
@@ -47,7 +50,7 @@ export const
       }
     })
 
-    const handleClick = () => {
+    const handleClick =async () => {
 
       const newEvent = [
         {
@@ -76,13 +79,33 @@ export const
         }
       ]
 
-      createdDocument(createDocument, "RM", newEvent)
+     createdDocument(createDocument, "RM", newEvent)
+
+await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
+   .then(resp => {
+
+     console.log("RESPONSE", resp.data.message)
+     setMesagge(resp.data.message)
+
+   }).catch(error => {
+     console.log("RESPONSE err", error)
+   })
+
+
       setTimeout(() => {
+        setMesagge("")
         onClose()
-      }, 3000);
+      }, 4000);
     }
 
 
+    if (message) {
+      return <Alert
+        type={'success'}
+      >
+        {message}
+      </Alert>
+    }
     if (created) {
       return <AlertInformation
         message={<FormattedMessage

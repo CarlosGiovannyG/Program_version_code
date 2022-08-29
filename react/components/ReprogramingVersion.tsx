@@ -4,7 +4,8 @@ import {
   Table,
   DatePicker,
   ButtonWithIcon,
-  IconCheck
+  Alert,
+  IconCheck,
 } from 'vtex.styleguide'
 import { getOneDocument } from '../hooks/getOneDocument';
 import { PropsEditDelEventRepr }
@@ -16,6 +17,7 @@ import UPDATE_DOCUMENT
 import { AlertInformation } from './AlertInformation';
 import { format } from 'date-fns';
 import { FormattedMessage } from "react-intl"
+import axios from 'axios';
 
 export const
   ReprogramingVersion: FC<PropsEditDelEventRepr> = (
@@ -23,6 +25,7 @@ export const
     const [success, setSuccess] = useState(false)
     const [isError, setIsError] = useState(false)
     const [currentDate, setCurrentDate] = useState(new Date())
+    const [message, setMesagge] = useState("")
     const { result } = getOneDocument(
       "RM",
       idVersion, [
@@ -33,9 +36,15 @@ export const
       'state'
     ])
     const [updateDocument] = useMutation(UPDATE_DOCUMENT, {
-      onCompleted: (data) => {
+      onCompleted: async(data) => {
         if (data.updateDocument.id) {
+          const response = await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
 
+          try {
+            console.log(response.data)
+          } catch (error) {
+            console.log(error)
+          }
           setSuccess(true)
           setTimeout(() => {
             setSuccess(false)
@@ -50,7 +59,7 @@ export const
         }, 4000);
       },
     })
-    const handleClick = () => {
+    const handleClick =async () => {
       let fields: any;
 
       fields = [
@@ -89,10 +98,29 @@ export const
         }
       })
 
+      await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
+        .then(resp => {
+
+          console.log("RESPONSE", resp.data.message)
+          setMesagge(resp.data.message)
+
+        }).catch(error => {
+          console.log("RESPONSE err", error)
+        })
+
       setTimeout(() => {
+        setMesagge("")
         onClose()
       }, 4000);
 
+    }
+
+    if (message) {
+      return <Alert
+        type={'success'}
+      >
+        {message}
+      </Alert>
     }
     if (success) {
       return <AlertInformation
