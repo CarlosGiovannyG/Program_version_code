@@ -8,7 +8,7 @@ import { schemaPendingVersions }
 import { FormattedMessage } from "react-intl"
 import '../styles.global.css'
 
-
+//& COMENTARIO PARA PROBAR RAMA Y PULL
 
 export const
   PendingVersions: FC<PropsMasterVersions> = (
