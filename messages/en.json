@@ -13,13 +13,6 @@
   "admin-programversion.state-version": "Actual State",
 
   "admin-programversion.message-delete" : "Confirm delete",
-
-
-
-
-
-
-
   "admin-programversion.navigation.search.kws": "test, mock, fake",
   "admin-programversion.navigation.details.search.kws": "details, mock, test, hello",
   "admin-programversion.navigation.table.search.kws": "table, mock, test, bye",
@@ -48,6 +41,8 @@
   "admin-programversion.title-delete-version": "delete version",
   "admin-programversion.text-action": "Action",
   "admin-programversion.title-backend-versions" : "Versions in Backend",
-  "admin-programversion.subtitle-backend-versions" : "Schedule a release to go into production"
+  "admin-programversion.subtitle-backend-versions" : "Schedule a release to go into production",
+
+  "admin-programversion.text-back-link": "Back"
 
 }

@@ -45,7 +45,8 @@
   "admin-programversion.title-delete-version": "excluir versão",
   "admin-programversion.text-action": "Ação",
   "admin-programversion.title-backend-versions" : "Versões no back-end",
-  "admin-programversion.subtitle-backend-versions" : "Schedule a release to go into production"
+  "admin-programversion.subtitle-backend-versions" : "Schedule a release to go into production",
+  "admin-programversion.text-back-link": "Retorna"
 
 
 }
