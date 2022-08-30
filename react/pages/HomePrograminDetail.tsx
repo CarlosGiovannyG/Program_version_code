@@ -5,7 +5,8 @@ import {
   IconEdit,
   IconMinus,
   IconDelete,
-  Table
+  Table,
+  PageHeader
 } from 'vtex.styleguide'
 import { DeleteEvent } from '../components/DeleteEvent';
 import { EditEvent } from '../components/EditEvent';
@@ -17,9 +18,7 @@ import { PropsDetail } from '../interfaces/interfaceData';
 import { schemaEditDelRepr } from '../schemas/schemasGlobals';
 import { FormattedMessage } from "react-intl"
 import '../styles.global.css';
-import { PageHeader } from 'vtex.styleguide',
-import { Link } from 'vtex.styleguide'
-
+import { Link } from 'vtex.render-runtime';
 
 export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
   const { isOpen, handleModal } = useModal()
@@ -73,14 +72,16 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
           idVersion={params.id}
         />
       }
+
       <PageHeader
-        linkLabel="Back"
-        onLinkClick={e => {
-          console.log(e)
-          return (
-            <Link href="/admin/app/programversion"></Link>
-          )
-        }}
+        linkLabel={
+          <Link Link
+            to={`/admin/app/programversion`}>
+            {<FormattedMessage
+              id="admin-programversion.title-detail-page"
+            />}
+          </Link >
+        }
       />
 
 

@@ -7,7 +7,7 @@ query GET_DOCUMENTS(
 acronym:$acronym,
 fields:$fields,
 where:$where,
-pageSize:1000
+pageSize:1200
   ){
     id,
     fields{
