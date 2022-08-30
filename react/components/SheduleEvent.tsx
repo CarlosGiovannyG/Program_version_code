@@ -7,6 +7,7 @@ import {
   Table,
   Alert
 } from 'vtex.styleguide'
+import { addDays} from 'date-fns'
 import { PropsShedule } from '../interfaces/interfaceData';
 import { ModalComponent } from './ModalComponent';
 import CREATE_DOCUMENT
@@ -32,9 +33,19 @@ export const
       (ele: any) => ele.id_existent === idVersion)
 
     const [createDocument] = useMutation(CREATE_DOCUMENT, {
-      onCompleted: (data) => {
+      onCompleted:async (data) => {
         if (data.createDocument.id) {
           setCreated(true)
+         await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
+            .then(resp => {
+
+              console.log("RESPONSE", resp.data.message)
+              setMesagge(resp.data.message)
+
+            }).catch(error => {
+              console.log("RESPONSE err", error)
+            })
+
           setTimeout(() => {
             setCreated(false)
           }, 3000);
@@ -50,7 +61,7 @@ export const
       }
     })
 
-    const handleClick =async () => {
+    const handleClick = () => {
 
       const newEvent = [
         {
@@ -81,15 +92,6 @@ export const
 
      createdDocument(createDocument, "RM", newEvent)
 
-await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
-   .then(resp => {
-
-     console.log("RESPONSE", resp.data.message)
-     setMesagge(resp.data.message)
-
-   }).catch(error => {
-     console.log("RESPONSE err", error)
-   })
 
 
       setTimeout(() => {
@@ -137,7 +139,7 @@ await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
               label={<h2><FormattedMessage
                 id="admin-programversion.title-select-date"
               /></h2>}
-              minDate={new Date()}
+              minDate={addDays(new Date(), 1)}
               value={currentDate}
               onChange={(
                 date: any

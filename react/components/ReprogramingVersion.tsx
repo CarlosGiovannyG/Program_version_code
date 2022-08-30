@@ -15,7 +15,7 @@ import { ModalComponent } from './ModalComponent';
 import UPDATE_DOCUMENT
   from '../graphql/updateDocuments.graphql'
 import { AlertInformation } from './AlertInformation';
-import { format } from 'date-fns';
+import { addDays } from 'date-fns';
 import { FormattedMessage } from "react-intl"
 import axios from 'axios';
 
@@ -46,6 +46,7 @@ export const
             console.log(error)
           }
           setSuccess(true)
+
           setTimeout(() => {
             setSuccess(false)
           }, 4000);
@@ -81,7 +82,7 @@ export const
         },
         {
           key: 'new_date',
-          value: format(currentDate, 'yyyy-MM-dd'),
+          value: currentDate,
         },
         {
           key: 'state',
@@ -97,16 +98,6 @@ export const
           }
         }
       })
-
-      await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
-        .then(resp => {
-
-          console.log("RESPONSE", resp.data.message)
-          setMesagge(resp.data.message)
-
-        }).catch(error => {
-          console.log("RESPONSE err", error)
-        })
 
       setTimeout(() => {
         setMesagge("")
@@ -153,7 +144,7 @@ export const
               label={<h2><FormattedMessage
                 id="admin-programversion.title-select-date"
               /></h2>}
-              minDate={new Date()}
+              minDate={addDays(new Date(), 1)}
               value={currentDate}
               onChange={(date: any) => setCurrentDate(date)}
               locale="en-US"

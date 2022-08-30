@@ -4,9 +4,9 @@ import {
   Table,
   DatePicker,
   ButtonWithIcon,
-  IconCheck
+  IconCheck,
+  Alert
 } from 'vtex.styleguide'
-import { format } from 'date-fns'
 import UPDATE_DOCUMENT
   from '../graphql/updateDocuments.graphql'
 import { PropsEditDelEventRepr }
@@ -17,6 +17,8 @@ import { AlertInformation } from './AlertInformation';
 import { getOneDocument } from '../hooks/getOneDocument';
 import { FormattedMessage } from "react-intl"
 import '../styles.global.css'
+import axios from 'axios';
+import { addDays } from 'date-fns';
 
 
 export const
@@ -26,6 +28,7 @@ export const
     const [success, setSuccess] = useState(false)
     const [currentDate, setCurrentDate] = useState(new Date())
     const [isError, setIsError] = useState(false)
+    const [message, setMesagge] = useState("")
     const { result } = getOneDocument(
       "RM",
       idVersion, [
@@ -39,10 +42,19 @@ export const
     const [
       updateDocument
     ] = useMutation(UPDATE_DOCUMENT, {
-      onCompleted: (data) => {
+      onCompleted:async (data) => {
         if (data.updateDocument.id) {
 
           setSuccess(true)
+         await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
+            .then(resp => {
+
+              console.log("RESPONSE", resp.data.message)
+              setMesagge(resp.data.message)
+
+            }).catch(error => {
+              console.log("RESPONSE err", error)
+            })
           setTimeout(() => {
             setSuccess(false)
           }, 4000);
@@ -79,7 +91,7 @@ export const
         },
         {
           key: 'new_date',
-          value: format(currentDate, 'yyyy-MM-dd'),
+          value:currentDate,
         },
         {
           key: 'state',
@@ -100,6 +112,13 @@ export const
         onClose()
       }, 4000);
 
+    }
+    if (message) {
+      return <Alert
+        type={'success'}
+      >
+        {message}
+      </Alert>
     }
     if (success) {
       return <AlertInformation
@@ -134,7 +153,7 @@ export const
                 />
                 {/* Seleccionar Fecha */}
               </h2>}
-              minDate={new Date()}
+              minDate={addDays(new Date(), 1)}
               value={currentDate}
               onChange={(
                 date: any
