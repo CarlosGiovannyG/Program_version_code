@@ -7,7 +7,7 @@ import {
   Table,
   Alert
 } from 'vtex.styleguide'
-import { addDays} from 'date-fns'
+import { addDays } from 'date-fns'
 import { PropsShedule } from '../interfaces/interfaceData';
 import { ModalComponent } from './ModalComponent';
 import CREATE_DOCUMENT
@@ -18,40 +18,33 @@ import { schemaShedule } from '../schemas/schemasGlobals';
 import { FormattedMessage } from "react-intl"
 import { getAllVersions } from '../hooks/getAllVersions';
 import '../styles.global.css'
-import axios from 'axios';
+
 
 export const
   SheduleEvent: FC<PropsShedule> = (
-    { isOpen, onClose, idVersion }) => {
-    const [currentDate, setCurrentDate ] = useState(new Date())
+    { isOpen, onClose, idVersion }:any) => {
+    const [currentDate, setCurrentDate] = useState(new Date())
     const [created, setCreated] = useState(false)
     const [isError, setIsError] = useState(false)
-    const [message,setMesagge ] = useState("")
+    const [message, setMesagge] = useState("")
     const { versBack } = getAllVersions()
 
     const result = versBack.find(
       (ele: any) => ele.id_existent === idVersion)
 
     const [createDocument] = useMutation(CREATE_DOCUMENT, {
-      onCompleted:async (data) => {
+      onCompleted: async (data:any) => {
         if (data.createDocument.id) {
           setCreated(true)
-         await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
-            .then(resp => {
 
-              console.log("RESPONSE", resp.data.message)
-              setMesagge(resp.data.message)
-
-            }).catch(error => {
-              console.log("RESPONSE err", error)
-            })
+          setMesagge("Tarea Programada")
 
           setTimeout(() => {
             setCreated(false)
           }, 3000);
         }
       },
-      onError: (error) => {
+      onError: (error:any) => {
         console.error('===> INFORMATION LOG ERROR', error);
         setIsError(true)
         setTimeout(() => {
@@ -90,7 +83,7 @@ export const
         }
       ]
 
-     createdDocument(createDocument, "RM", newEvent)
+      createdDocument(createDocument, "RM", newEvent)
 
 
 

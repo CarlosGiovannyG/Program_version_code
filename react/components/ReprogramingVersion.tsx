@@ -17,11 +17,10 @@ import UPDATE_DOCUMENT
 import { AlertInformation } from './AlertInformation';
 import { addDays } from 'date-fns';
 import { FormattedMessage } from "react-intl"
-import axios from 'axios';
 
 export const
   ReprogramingVersion: FC<PropsEditDelEventRepr> = (
-    { isOpen, onClose, idVersion }) => {
+    { isOpen, onClose, idVersion }:any) => {
     const [success, setSuccess] = useState(false)
     const [isError, setIsError] = useState(false)
     const [currentDate, setCurrentDate] = useState(new Date())
@@ -36,15 +35,9 @@ export const
       'state'
     ])
     const [updateDocument] = useMutation(UPDATE_DOCUMENT, {
-      onCompleted: async(data) => {
+      onCompleted: async(data:any) => {
         if (data.updateDocument.id) {
-          const response = await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
 
-          try {
-            console.log(response.data)
-          } catch (error) {
-            console.log(error)
-          }
           setSuccess(true)
 
           setTimeout(() => {
@@ -52,7 +45,7 @@ export const
           }, 4000);
         }
       },
-      onError(error) {
+      onError(error:any) {
         console.log('===> INFORMATION LOG ERROR', error);
         setIsError(true)
         setTimeout(() => {

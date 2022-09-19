@@ -17,13 +17,12 @@ import { AlertInformation } from './AlertInformation';
 import { getOneDocument } from '../hooks/getOneDocument';
 import { FormattedMessage } from "react-intl"
 import '../styles.global.css'
-import axios from 'axios';
 import { addDays } from 'date-fns';
 
 
 export const
   EditEvent: FC<PropsEditDelEventRepr> = (
-    { isOpen, onClose, idVersion }
+    { isOpen, onClose, idVersion }: any
   ) => {
     const [success, setSuccess] = useState(false)
     const [currentDate, setCurrentDate] = useState(new Date())
@@ -42,25 +41,16 @@ export const
     const [
       updateDocument
     ] = useMutation(UPDATE_DOCUMENT, {
-      onCompleted:async (data) => {
+      onCompleted: async (data: any) => {
         if (data.updateDocument.id) {
-
           setSuccess(true)
-         await axios.get("https://carlosgiovanny--tiendasjumboqaio.myvtex.com/shedule")
-            .then(resp => {
-
-              console.log("RESPONSE", resp.data.message)
-              setMesagge(resp.data.message)
-
-            }).catch(error => {
-              console.log("RESPONSE err", error)
-            })
+          setMesagge("Tarea Programada")
           setTimeout(() => {
             setSuccess(false)
           }, 4000);
         }
       },
-      onError(error) {
+      onError(error: any) {
         console.log('===> INFORMATION LOG ERROR', error);
         setIsError(true)
         setTimeout(() => {
@@ -91,7 +81,7 @@ export const
         },
         {
           key: 'new_date',
-          value:currentDate,
+          value: currentDate,
         },
         {
           key: 'state',
