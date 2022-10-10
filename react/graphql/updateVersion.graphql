@@ -5,11 +5,3 @@ mutation updateCMSGlobalData($data: ICMSGlobalData) {
     success
   }
 }
-
-# {
-#   "data": {
-#     "latestVersion": "70",
-#       "availableVersions": ["35"]
-#   }
-
-# }

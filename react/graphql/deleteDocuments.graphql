@@ -5,7 +5,9 @@ $idDocument:String!
   deleteDocument(
     acronym:$acronym,
     documentId:$idDocument
-  ){
+  )
+  @context(providers:"vtex.store-graphql")
+  {
     cacheId
   }
 }

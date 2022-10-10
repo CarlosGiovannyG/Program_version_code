@@ -5,7 +5,9 @@ mutation CREATE_DOCUMET(
   createDocument(
    acronym: $acronym,
     document: $document
-  ) {
+  )
+   @context(providers:"vtex.store-graphql")
+  {
     id
   }
 }

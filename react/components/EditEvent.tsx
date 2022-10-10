@@ -27,7 +27,7 @@ export const
     const [success, setSuccess] = useState(false)
     const [currentDate, setCurrentDate] = useState(new Date())
     const [isError, setIsError] = useState(false)
-    const [message, setMesagge] = useState("")
+    const [message, setMessage] = useState("")
     const { result } = getOneDocument(
       "RM",
       idVersion, [
@@ -44,7 +44,7 @@ export const
       onCompleted: async (data: any) => {
         if (data.updateDocument.id) {
           setSuccess(true)
-          setMesagge("Tarea Programada")
+          setMessage("Tarea Programada")
           setTimeout(() => {
             setSuccess(false)
           }, 4000);
