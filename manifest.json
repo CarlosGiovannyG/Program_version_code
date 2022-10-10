@@ -47,7 +47,7 @@
     {
       "name": "outbound-access",
       "attrs": {
-        "host": "tiendasjumboqaio.vtexcommercestable.com.br",
+        "host": "jumbocolombiaio.vtexcommercestable.com.br",
         "path": "/api/dataentities/*"
       }
     }
