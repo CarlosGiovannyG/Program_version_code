@@ -6,7 +6,7 @@ updateDocument(
   acronym:$acronym,
   document:$document
 )
-@context(providers:"vtex.store-graphql" )
+@context(providers:"vtex.store-graphql")
 {
   id
   cacheId
