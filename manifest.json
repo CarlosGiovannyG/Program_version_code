@@ -1,6 +1,6 @@
 {
   "name": "programversion",
-  "vendor": "jumbocolombiaio",
+  "vendor": "tiendasjumboqaio",
   "version": "0.8.2",
   "title": "Program Version",
   "description": "Componente que permite programar la salida  a producción de una versión de la aplicación de Jumbo",
@@ -47,7 +47,7 @@
     {
       "name": "outbound-access",
       "attrs": {
-        "host": "jumbocolombiaio.vtexcommercestable.com.br",
+        "host": "tiendasjumboqaio.vtexcommercestable.com.br",
         "path": "/api/dataentities/*"
       }
     }
