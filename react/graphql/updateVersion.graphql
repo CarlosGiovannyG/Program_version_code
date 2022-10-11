@@ -1,6 +1,6 @@
 mutation updateCMSGlobalData($data: ICMSGlobalData) {
   updateCMSGlobalData(data: $data)
-  @context(provider: "jumbocolombiaio.profile-service-app")
+  @context(provider:"jumbocolombiaio.profile-service-app")
   {
     success
   }
