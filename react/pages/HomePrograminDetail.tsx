@@ -25,15 +25,7 @@ export const HomePrograminDetail: FC<PropsDetail> = ({ params }) => {
   const [isEdit, setIsEdit] = useState(false)
   const [isDelete, setIsDelete] = useState(false)
   const [reprograming, setReprograming] = useState(false)
-  const { result } = getOneDocument(
-    "RM",
-    params.id, [
-    'id_existent',
-    'name',
-    'actual_date',
-    'new_date',
-    'state'
-  ])
+  const { result } = getOneDocument(params.id)
 
   const handleEdit = () => {
     setIsEdit(true)

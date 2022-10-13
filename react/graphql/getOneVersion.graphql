@@ -1,0 +1,11 @@
+query GET_ONE_VERSION($id:String){
+  getOneVersion(id:$id){
+   id
+    id_existent
+    name
+    actual_date
+    state
+    num_version
+    new_date
+}
+}

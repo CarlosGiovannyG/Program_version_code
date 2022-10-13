@@ -1,10 +1,8 @@
-import { pathOr } from "ramda"
 import { useQuery } from "react-apollo"
-import GET_DOCUMENTS
-  from '../graphql/getDocuments.graphql'
 import GET_VERSIONS
   from '../graphql/getVersions.graphql'
-import { documentSerializer } from "../utils/serializer"
+import GET_ALL_VERSIONS
+  from '../graphql/getAllVersions.graphql'
 
 export const getAllVersions = () => {
   let versBack: any = []
@@ -12,65 +10,51 @@ export const getAllVersions = () => {
   let progressVersion: any = []
   let pendingVersions: any = []
   const doneVersions: any = []
-
   const { data: backVers, error: errbackVers, loading: loadbackVers } = useQuery(GET_VERSIONS)
+
+
+  const { data, error, loading } = useQuery(GET_ALL_VERSIONS)
 
 
   if (!errbackVers && !loadbackVers) {
     const { availableVersions } = backVers.getCMSGlobalData
 
     for (let i = 0; i < availableVersions.length; i++) {
-      const auxAvai = {
+      const auxAvail = {
         name: `Version-${availableVersions[i]}`,
         id_existent: `CMSGlobalData-available-${availableVersions[i]}`,
         num_version: availableVersions[i]
       }
-      versBack.push(auxAvai)
+      versBack.push(auxAvail)
     }
   }
 
-
-  const { data: dataMaster, loading: loadMaster, error: errMaster } = useQuery(GET_DOCUMENTS, {
-    variables: {
-      acronym: "RM",
-      fields: [
-        'actual_date',
-        'id_existent',
-        'name',
-        'new_date',
-        'state',
-      ]
-    }
-  })
-
-  const masterData = documentSerializer(pathOr([], ['documents'], dataMaster))
-
-  if (!loadMaster && !errMaster) {
-    //& FILTRANDO LAS VERSIONES QUE ESTAN EN EL BACK Y NO EN MASTER DATA
+  if (!loading && !error) {
+    //& FILTRANDO LAS VERSIONES QUE ESTÁN EN EL BACK Y NO EN MASTER DATA
     let aux: any = versBack.filter((x: any) => {
 
-      for (let i = 0; i < masterData.length; i++) {
-        if (x.id_existent === masterData[i].id_existent) return x
+      for (let i = 0; i < data.getVersions.length; i++) {
+        if (x.id_existent === data.getVersions[i].id_existent) return x
       }
     })
     dataFiltered = versBack.filter((x: any) => !aux.includes(x))
 
-    //* FILTARNDO LA VERSION QUE ESTA EN PRODUCCION
-    masterData.filter((d: any) => {
+    //* FILTRANDO LA VERSION QUE ESTA EN PRODUCCIÓN
+    data.getVersions.filter((d: any) => {
       if (d.state === 'progress') {
         progressVersion.push(d)
       }
     })
 
-    //^ FILTARNDO LAS VERSIONES QUE ESTAN PENDIENTES POR SALIR A PRODUCCION
-    masterData.filter((d: any) => {
+    //^ FILTRANDO LAS VERSIONES QUE ESTÁN PENDIENTES POR SALIR A PRODUCCIÓN
+    data.getVersions.filter((d: any) => {
       if (d.state === 'pending') {
         pendingVersions.push(d)
       }
     })
 
-    //~~ FILTARNDO LAS VERSIONES YA NO ESTAN EN PRODUCCION
-    masterData.filter((d: any) => {
+    //~~ FILTRANDO LAS VERSIONES YA NO ESTÁN EN PRODUCCIÓN
+    data.getVersions.filter((d: any) => {
       if (d.state === 'done') {
         doneVersions.push(d)
       }
@@ -85,6 +69,7 @@ export const getAllVersions = () => {
   }
 
   pendingVersions.sort(sortByDate)
+
 
   return {
     versBack,

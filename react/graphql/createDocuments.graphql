@@ -1,13 +1,7 @@
-mutation CREATE_DOCUMET(
-  $acronym: String!
-  $document:DocumentInput
-  ){
-  createDocument(
-   acronym: $acronym,
-    document: $document
-  )
-   @context(providers:"vtex.store-graphql")
-  {
-    id
+mutation CREATE_VERSION($version: NewVersion){
+  createVersion(version:$version)
+   @context(provider:"jumbocolombiaio.profile-service-app")
+   {
+    success
   }
 }

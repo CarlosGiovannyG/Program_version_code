@@ -10,9 +10,8 @@ import {
 import { addDays } from 'date-fns'
 import { PropsShedule } from '../interfaces/interfaceData';
 import { ModalComponent } from './ModalComponent';
-import CREATE_DOCUMENT
+import CREATE_VERSION
   from '../graphql/createDocuments.graphql'
-import { createdDocument } from '../hooks/useCreateDoc';
 import { AlertInformation } from './AlertInformation';
 import { schemaShedule } from '../schemas/schemasGlobals';
 import { FormattedMessage } from "react-intl"
@@ -32,9 +31,9 @@ export const
     const result = versBack.find(
       (ele: any) => ele.id_existent === idVersion)
 
-    const [createDocument] = useMutation(CREATE_DOCUMENT, {
+    const [createVersion] = useMutation(CREATE_VERSION, {
       onCompleted: async (data:any) => {
-        if (data.createDocument.id) {
+        if (data.createVersion.success) {
           setCreated(true)
 
           setMesagge("Tarea Programada")
@@ -56,36 +55,18 @@ export const
 
     const handleClick = () => {
 
-      const newEvent = [
-        {
-          key: 'actual_date',
-          value: new Date(),
-        },
-        {
-          key: 'id_existent',
-          value: result.id_existent
-        },
-        {
-          key: 'name',
-          value: result.name,
-        },
-        {
-          key: 'new_date',
-          value: currentDate,
-        },
-        {
-          key: 'state',
-          value: 'pending'
-        },
-        {
-          key: 'num_version',
-          value: result.num_version
-        }
-      ]
-
-      createdDocument(createDocument, "RM", newEvent)
-
-
+        createVersion({
+          variables: {
+            version:{
+              "id_existent": result.id_existent,
+              "name": result.name,
+              "actual_date": new Date(),
+              "new_date":  currentDate,
+              "state": 'pending',
+              "num_version": result.num_version
+            }
+          }
+        })
 
       setTimeout(() => {
         setMesagge("")

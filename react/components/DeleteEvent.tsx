@@ -10,7 +10,7 @@ import { PropsEditDelEventRepr }
   from '../interfaces/interfaceData';
 import { schemaEditDelRepr } from '../schemas/schemasGlobals';
 import { ModalComponent } from './ModalComponent';
-import DELETE_DOCUMENT
+import DELETE_VERSION
   from '../graphql/deleteDocuments.graphql'
 import { AlertInformation } from './AlertInformation';
 import { FormattedMessage } from "react-intl"
@@ -23,22 +23,13 @@ export const
     const [success, setSuccess] = useState(false)
     const [isError, setIsError] = useState(false)
     const [stateConfirm, setStateConfirm] = useState(false)
-    const [idDelete, setIdDelete] = useState('')
-    const { result } = getOneDocument(
-      "RM",
-      idVersion, [
-      'id_existent',
-      'name',
-      'actual_date',
-      'new_date',
-      'state'
-    ])
-    const [
-      deleteDocument
-    ] = useMutation(DELETE_DOCUMENT, {
-      onCompleted: (data) => {
-        if (data.deleteDocument.id) {
+    const { result } = getOneDocument(idVersion)
 
+    const [
+      deleteVersion
+    ] = useMutation(DELETE_VERSION, {
+      onCompleted: (data) => {
+        if (data.deleteVersion.success) {
           setSuccess(true)
           setTimeout(() => {
             setSuccess(false)
@@ -55,21 +46,29 @@ export const
     })
 
     const confirm = () => {
-      setIdDelete(result[0].id)
       setStateConfirm(true)
     }
 
+    const versiondeleted = {
+      "id": result[0].id,
+      "id_existent": result[0].id_existent,
+      "name": result[0].name,
+      "actual_date": result[0].actual_date,
+      "new_date": result[0].actual_date||new Date(),
+      "state": result[0].state,
+      "num_version": result[0].num_version
+    }
+
     const handleClick = () => {
-      deleteDocument({
+      deleteVersion({
         variables: {
-          acronym: "RM",
-          idDocument: idDelete,
+          version: versiondeleted
         }
       })
 
       setTimeout(() => {
         onClose()
-      }, 4000);
+      }, 3000);
 
     }
     if (success) {

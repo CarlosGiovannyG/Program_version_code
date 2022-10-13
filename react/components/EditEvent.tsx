@@ -7,7 +7,7 @@ import {
   IconCheck,
   Alert
 } from 'vtex.styleguide'
-import UPDATE_DOCUMENT
+import UPDATE_VERSION
   from '../graphql/updateDocuments.graphql'
 import { PropsEditDelEventRepr }
   from '../interfaces/interfaceData';
@@ -28,21 +28,13 @@ export const
     const [currentDate, setCurrentDate] = useState(new Date())
     const [isError, setIsError] = useState(false)
     const [message, setMessage] = useState("")
-    const { result } = getOneDocument(
-      "RM",
-      idVersion, [
-      'id_existent',
-      'name',
-      'actual_date',
-      'new_date',
-      'state'
-    ])
+    const { result } = getOneDocument(idVersion)
 
     const [
-      updateDocument
-    ] = useMutation(UPDATE_DOCUMENT, {
+      updateVersion
+    ] = useMutation(UPDATE_VERSION, {
       onCompleted: async (data: any) => {
-        if (data.updateDocument.id) {
+        if (data.updateVersion.success) {
           setSuccess(true)
           setMessage("Tarea Programada")
           setTimeout(() => {
@@ -60,41 +52,21 @@ export const
     })
 
     const handleClick = () => {
-      let fields: any;
 
-      fields = [
-        {
-          key: 'id',
-          value: result[0].id,
-        },
-        {
-          key: 'actual_date',
-          value: result[0].new_date,
-        },
-        {
-          key: 'id_existent',
-          value: result[0].id_existent
-        },
-        {
-          key: 'name',
-          value: result[0].name,
-        },
-        {
-          key: 'new_date',
-          value: currentDate,
-        },
-        {
-          key: 'state',
-          value: 'pending'
-        }
-      ]
+      const versionUpdated = {
+        "id": result[0]?.id,
+        "id_existent": result[0]?.id_existent,
+        "name": result[0]?.name,
+        "actual_date": result[0].new_date,
+        "new_date": currentDate,
+        "state": 'pending',
+        "num_version": result[0]?.num_version
+      }
 
-      updateDocument({
+
+    updateVersion({
         variables: {
-          acronym: "RM",
-          document: {
-            fields: fields
-          }
+          version: versionUpdated
         }
       })
 
