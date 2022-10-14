@@ -1,7 +1,7 @@
 {
   "name": "programversion",
   "vendor": "jumbocolombiaio",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "title": "Program Version",
   "description": "Componente que permite programar la salida  a producción de una versión de la aplicación de Jumbo",
   "mustUpdateAt": "2022-08-28",
