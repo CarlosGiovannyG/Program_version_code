@@ -14,18 +14,24 @@ export const getAllVersions = () => {
 
 
   const { data, error, loading } = useQuery(GET_ALL_VERSIONS)
-
+console.log('====================================');
+console.log({backVers});
+console.log('====================================');
+console.log({data});
 
   if (!errbackVers && !loadbackVers) {
-    const { availableVersions } = backVers.getCMSGlobalData
+    const { availableVersions ,latestVersion} = backVers.getCMSGlobalData
 
     for (let i = 0; i < availableVersions.length; i++) {
+
       const auxAvail = {
         name: `Version-${availableVersions[i]}`,
         id_existent: `CMSGlobalData-available-${availableVersions[i]}`,
         num_version: availableVersions[i]
       }
-      versBack.push(auxAvail)
+            if (availableVersions[i] > latestVersion) {
+        versBack.push(auxAvail)
+      }
     }
   }
 
