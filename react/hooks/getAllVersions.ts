@@ -9,15 +9,10 @@ export const getAllVersions = () => {
   let dataFiltered: any = []
   let progressVersion: any = []
   let pendingVersions: any = []
-  const doneVersions: any = []
   const { data: backVers, error: errbackVers, loading: loadbackVers } = useQuery(GET_VERSIONS)
 
 
   const { data, error, loading } = useQuery(GET_ALL_VERSIONS)
-console.log('====================================');
-console.log({backVers});
-console.log('====================================');
-console.log({data});
 
   if (!errbackVers && !loadbackVers) {
     const { availableVersions ,latestVersion} = backVers.getCMSGlobalData
@@ -59,12 +54,6 @@ console.log({data});
       }
     })
 
-    //~~ FILTRANDO LAS VERSIONES YA NO ESTÁN EN PRODUCCIÓN
-    data.getVersions.filter((d: any) => {
-      if (d.state === 'done') {
-        doneVersions.push(d)
-      }
-    })
   }
 
 
@@ -82,6 +71,5 @@ console.log({data});
     dataFiltered,
     pendingVersions,
     progressVersion,
-    doneVersions,
   }
 }

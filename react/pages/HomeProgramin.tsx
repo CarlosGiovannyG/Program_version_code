@@ -1,6 +1,5 @@
 import React, { FC, } from 'react'
 import { AllVersions } from '../components/AllVersions';
-import { DoneVersions } from '../components/DoneVersions';
 import { InProgressVersion }
   from '../components/InProgressVersion';
 import { PendingVersions }
@@ -13,7 +12,6 @@ export const HomeProgramin: FC = () => {
     dataFiltered,
     pendingVersions,
     progressVersion,
-    doneVersions,
   } = getAllVersions()
 
   return (
@@ -31,11 +29,6 @@ export const HomeProgramin: FC = () => {
       <div className='containerBlock'>
         <PendingVersions
           data={pendingVersions}
-        />
-      </div>
-      <div className='containerBlock'>
-        <DoneVersions
-          data={doneVersions}
         />
       </div>
     </div>
