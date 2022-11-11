@@ -1,7 +1,7 @@
 {
   "name": "programversion",
   "vendor": "metrocolombiaio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "Program Version",
   "description": "Componente que permite programar la salida  a producción de una versión de la aplicación de Jumbo",
   "mustUpdateAt": "2022-11-11",
