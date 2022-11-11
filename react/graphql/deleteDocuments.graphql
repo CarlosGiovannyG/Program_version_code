@@ -1,6 +1,6 @@
 mutation DELETE_VERSION($version: DeleteVersion){
   deleteVersion(version:$version)
-   @context(provider:"jumbocolombiaio.profile-service-app")
+   @context(provider:"metrocolombiaio.profile-service-app")
    {
     success
   }

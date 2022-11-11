@@ -1,6 +1,6 @@
 mutation UPDATE_VERSION($version: UpdateVersion){
   updateVersion(version:$version)
-     @context(provider:"jumbocolombiaio.profile-service-app")
+     @context(provider:"metrocolombiaio.profile-service-app")
      {
     success
   }

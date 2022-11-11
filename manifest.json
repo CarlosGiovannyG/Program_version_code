@@ -1,10 +1,10 @@
 {
   "name": "programversion",
-  "vendor": "jumbocolombiaio",
-  "version": "0.8.5",
+  "vendor": "metrocolombiaio",
+  "version": "0.0.1",
   "title": "Program Version",
   "description": "Componente que permite programar la salida  a producción de una versión de la aplicación de Jumbo",
-  "mustUpdateAt": "2022-08-28",
+  "mustUpdateAt": "2022-11-11",
   "scripts": {
     "postreleasy": "vtex publish"
   },
@@ -13,7 +13,7 @@
     "vtex.store-graphql": "2.x",
     "vtex.render-runtime": "8.x",
     "vtex.css-handles": "0.x",
-    "jumbocolombiaio.profile-service-app": "1.x"
+    "metrocolombiaio.profile-service-app": "1.x"
   },
   "builders": {
     "react": "3.x",
@@ -47,7 +47,7 @@
     {
       "name": "outbound-access",
       "attrs": {
-        "host": "jumbocolombiaio.vtexcommercestable.com.br",
+        "host": "metrocolombiaio.vtexcommercestable.com.br",
         "path": "/api/dataentities/*"
       }
     }
