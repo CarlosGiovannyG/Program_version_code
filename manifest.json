@@ -1,7 +1,7 @@
 {
   "name": "programversion",
   "vendor": "easycolombia",
-  "version": "1.2.1",
+  "version": "0.1.1",
   "title": "Program Version",
   "description": "Componente que permite programar la salida  a producción de una versión de la aplicación de Jumbo",
   "mustUpdateAt": "2022-11-11",
