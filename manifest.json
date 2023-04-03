@@ -1,6 +1,6 @@
 {
   "name": "programversion",
-  "vendor": "metrocolombiaio",
+  "vendor": "easycolombia",
   "version": "1.1.0",
   "title": "Program Version",
   "description": "Componente que permite programar la salida  a producción de una versión de la aplicación de Jumbo",
@@ -13,7 +13,7 @@
     "vtex.store-graphql": "2.x",
     "vtex.render-runtime": "8.x",
     "vtex.css-handles": "0.x",
-    "metrocolombiaio.profile-service-app": "1.x"
+    "easycolombia.profile-service-app": "3.x"
   },
   "builders": {
     "react": "3.x",
@@ -47,7 +47,7 @@
     {
       "name": "outbound-access",
       "attrs": {
-        "host": "metrocolombiaio.vtexcommercestable.com.br",
+        "host": "easycolombia.vtexcommercestable.com.br",
         "path": "/api/dataentities/*"
       }
     }
